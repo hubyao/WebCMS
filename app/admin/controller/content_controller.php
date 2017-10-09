@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 class content_controller extends comm_controller{
 	public $fid_str='';
 
@@ -621,7 +621,7 @@ public function content_move(){
 					</div>';
 		}
 		//省市区选择器-
-		elseif($field_type=='city'){
+		elseif($field_type=='address'){
 
 			$html = '<div class="layui-form-item" '.$idname.'   >
                					 <label class=" layui-form-label">'.$cname.'</label>
