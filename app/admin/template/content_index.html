@@ -1,4 +1,4 @@
-{include inc_top.html}
+﻿{include inc_top.html}
 {include inc_left.html}
 <div class="layui-body">
 	<!--tab标签-->
@@ -63,7 +63,7 @@
 							<a href="#" data-url="{:url('content/content_move',['action'=>'up','pid'=>$pid,'id'=>$v['id']])}" class="layui-btn layui-btn-normal layui-btn-mini ajax-link">向下</a>
 						</td>
 						<td align="right" nowrap>
-							<a href="{:url('content/add',['pid'=>$pid,'id'=>$v['id']])}" class="layui-btn layui-btn-mini edit_category">修改</a>
+							<a href="{:url('content/add',['pid'=>$pid,'id'=>$v['id']])}" class="layui-btn layui-btn-mini edit_category">查看/修改</a>
 							<a href="#" data-url="{:url('content/delete',['pid'=>$pid,'id'=>$v['id']])}" class="layui-btn layui-btn-danger layui-btn-mini ajax-delete">删除</a>
 						</td>
 					</tr>
