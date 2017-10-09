@@ -335,10 +335,9 @@ class content_controller extends comm_controller{
 			$data = F::input('post.');
 			unset($data['file']);
 			$id = $data['id'];
-			
 			$pid = $data['pid'];
-			$data['add_time']=time();
-			
+			$data['add_time']=  time();
+			// p($data);
 			// 检查是否有必填项未填的
 			$field_arr = $this->db->table('field')->where('is_must=1 and pid='.$pid)->order('sort')->getlist();
 			foreach($field_arr as $k=>$v){
@@ -484,7 +483,7 @@ public function content_move(){
 		//拆分默认值
 		if($arr['default']){
 			$def_arr =	str_replace(PHP_EOL,"\n",$arr['default']);
-			$def_arr = 	explode("\n", $data);
+			$def_arr = 	explode("\n", $arr['default']);
 		}
 
 		//文本输入框
@@ -596,7 +595,7 @@ public function content_move(){
 			$html = '<div class="layui-form-item">
 						<label class="layui-form-label">'.$cname.'</label>
 						<div class="layui-input-block">
-							 <input type="text" '.$idname.' lay-verify="date" placeholder="yyyy-mm-dd" autocomplete="off" class="layui-input" onclick="layui.laydate({elem: this})" value="'.$val.'" style="width:242px">
+							 <input type="text" '.$idname.' lay-verify="date" placeholder="yyyy-mm-dd hh:mm" autocomplete="off" class="layui-input" onclick="layui.laydate({elem: this,istime: true})" value="'.$val.'" style="width:242px">
 						</div>
 					</div>';
 		}
@@ -620,6 +619,29 @@ public function content_move(){
 						});
 						</script>
 					</div>';
+		}
+		//省市区选择器-
+		elseif($field_type=='city'){
+
+			$html = '<div class="layui-form-item" '.$idname.'   >
+               					 <label class=" layui-form-label">'.$cname.'</label>
+                					<div class=" layui-input-inline">
+                    					<select  id = "province"  lay-filter="province">
+                        					<option value="">请选择省</option>
+                    					</select>
+                					</div>
+                					<div class="layui-input-inline" style="display: none;">
+                    					<select id = "city" lay-filter="city">
+                        					<option value="">请选择市</option>
+                    					</select>
+                					</div>
+                					<div class="layui-input-inline" style="display: none;">
+                    					<select  id="area" lay-filter="area">
+                        					<option value="">请选择县/区</option>
+                   			    		</select>
+                					</div>
+                					<input type="hidden" name='.$fname.'  id="hidden_address"/>
+    				</div>';
 		}
 		return $html;
 	}

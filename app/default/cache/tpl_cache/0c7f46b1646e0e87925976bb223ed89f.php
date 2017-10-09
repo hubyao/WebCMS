@@ -1,13 +1,13 @@
 <?php if (!defined('BASE_PATH')) exit;?><!DOCTYPE HTML>
 <html>
 <head>
-<title>售后政策-科技公司</title>
+<title>联系我们-科技公司</title>
 <meta name="renderer" content="webkit">
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-<meta name="generator" content="91mb 5.3.16"  data-variable="http://show.91mb.com.cn/muban/res013/323/,cn,129,129,1,res013" />
-<meta name="description" content="您可以通过400电话或者在线客服，咨询一系列售前、售中、售后问题。我们的客服团队全心全意为您提供细致周到、专业服务，同时，您可以根据产品进入相关内容板块，了解更多相关知识。" />
+<meta name="generator" content="91mb 5.3.16"  data-variable="http://show.91mb.com.cn/muban/res013/323/,cn,126,126,1,res013" />
+<meta name="description" content="某某科技有限责任公司地址： XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX电话： 00000000000邮编： 000000传真： 00000000000-0000" />
 <meta name="keywords" content="科技公司网站模板|科技公司企业网站模板" />
 <link href="/public/default/images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 <link rel='stylesheet' href='/public/default/css/metinfo.css'>
@@ -65,82 +65,35 @@
 	</div>
 </nav>
 <div class="met-banner-ny vertical-align text-center" style=''>
-	<h2 class="vertical-align-middle">支持</h2>
+	<h2 class="vertical-align-middle">关于</h2>
 </div>
-<div class="met-column-nav ">
-	<div class="container">
-		<div class="row">
-			<div class="sidebar-tile">
+
+		<div class="met-column-nav ">
+			<div class="container">
+				<div class="row">
+
+					<div class="sidebar-tile">
 				<ul class="met-column-nav-ul invisible-xs">
-				<?php foreach($service_nav as $k=>$v) { ?>
-					<li> <a href="<?php echo $v['href']; ?>" title="<?php echo $v['name']; ?>" class="link <?php if(explode('/',$_SERVER['PHP_SELF'])[2] == explode('/',$v['href'])[1]) { ?>active<?php } ?>">售后政策</a> </li>
+				<?php foreach($nav as $k =>$v) { ?>
+					<li> <a href="<?php echo $v['href']; ?>" title="<?php echo $v['name']; ?>" class="link <?php if(explode('/',$_SERVER['PHP_SELF'])[2] == explode('/',$v['href'])[1]) { ?>active<?php } ?>"><?php echo $v['name']; ?></a> </li>
 				<?php } ?>
 				</ul>
+					</div>
+				</div>
 			</div>
 		</div>
-	</div>
-</div>
+
 <section class="met-show animsition">
 	<div class="container">
 		<div class="row">
 			<div class="met-editor lazyload clearfix">
-				<div>
-					<p style="text-align: center;"><br/>
-					</p>
-					<?php foreach($list['content'] as $k=>$v) { ?>
-					<p style="text-align: center;"><?php echo $v; ?></p>
-					<?php } ?>
-					<p><br/>
-					</p>
-					<p><br/>
-					</p>
-					<hr/>
-					<p><?php echo $list[text]; ?></p>
-					<p><br/>
-					</p>
-					<p><strong><?php echo $list['title']; ?></strong></p>
-					<ul class=" list-paddingleft-2" style="list-style-type: disc;">
-					<?php foreach($list['text2'] as $k=>$v) { ?>
-						<li>
-							<p><?php echo $v; ?></p>
-						</li>
-					<?php } ?>
-					</ul>
-				</div>
+				<div><p style="text-align: center;"><img class="" height="200" data-original="http://show.91mb.com.cn/muban/res013/323/upload/201605/1464077148677664.png" title="1464077148677664.png" alt="QQ截图20160524160529.png" style="line-height: 1.42857; display: inline;" src="/public/default/images/map.png"><span style="font-weight: 700;"></span></p><hr/><p style="white-space: normal;"><span style="font-weight: 700;"></span><span style="font-weight: 700; line-height: 1.42857;">某某科技有限责任公司</span></p><p style="white-space: normal;">地址： XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</p><p style="white-space: normal;">电话： 00000000000</p><p style="white-space: normal;">邮编： 000000</p><p style="white-space: normal;">传真： 00000000000-0000</p></div>
 			</div>
 		</div>
 	</div>
 </section>
-<?php if (!defined('BASE_PATH')) exit;?><div class="met-footnav text-center">
-	<div class="container">
-		<div class="row mob-masonry">
-		<?php foreach($foot_nav as $k=>$v) { ?>
-			<div class="col-md-2 col-sm-3 col-xs-6 list masonry-item">
-				<h4><a href="<?php echo $v['content']; ?>"  title="产品"><?php echo $v['name']; ?></a></h4>
-				<ul>
-					<?php foreach($foot_nav[$k][data] as $k=>$v) { ?>
-					<li><a href="<?php echo $v['href']; ?>"  title="<?php echo $v['name']; ?>"><?php echo $v['name']; ?></a></li>
-					<?php } ?>
-				</ul>
-			</div>
-			<?php } ?>
-			<div class="col-md-3 col-ms-12 col-xs-12 info masonry-item"> <em><a href="tel:400-000-000" title="400-000-000">400-000-000</a></em>
-				<p>周一至周五 08:30~17:30</p>
-				<a id="met-weixin"><i class="fa fa-weixin light-green-700" data-plugin="webuiPopover" data-trigger="hover" data-animation="pop" data-placement='top' data-width='160' data-padding='0' data-content="<img src='upload/201605/1464081530.jpg' alt='科技公司网站模板|科技公司企业网站模板-科技公司' style='width: 150px;display:block;margin:auto;'>"></i></a> <a href="http://wpa.qq.com/msgrd?v=3&uin=&site=qq&menu=yes" rel="nofollow" target="_blank"> <i class="fa fa-qq"></i> </a> <a href="323.html" rel="nofollow" target="_blank"><i class="fa fa-weibo red-600"></i></a> </div>
-		</div>
-	</div>
-</div>
-<footer>
-	<div class="container text-center">
-		<p>科技公司 版权所有 © 2008-2016 湘ICP备8888888 </p>
-		<p>本页面内容为网站演示数据，前台页面内容都可以在后台修改。</p>
-		<div class="powered_by_metinfo">Powered&nbsp;by&nbsp;<a href="../../../www_91mb_com_default.html#copyright" target="_blank" title="企业网站管理系统">91mb</a>&nbsp;5.3.16</div>
-	</div>
-</footer>
-<button type="button" class="btn btn-icon btn-primary btn-squared met-scroll-top hide"><i class="icon wb-chevron-up" aria-hidden="true"></i></button>
-<script>
-var jsonurl='http://show.91mb.com.cn/muban/res013/323/shop/cart.php?a=dojson_cart_list&lang=cn',totalurl='http://show.91mb.com.cn/muban/res013/323/shop/cart.php?a=domodify&lang=cn',delurl='http://show.91mb.com.cn/muban/res013/323/shop/cart.php?a=dodel&lang=cn',lang_emptycart='购物车中还没有商品，赶紧选购吧！';
-</script>
-<script src="/public/default/js/metinfo.js"></script>
+
+
+{inclode foot.html}
 </body>
 </html>

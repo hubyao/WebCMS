@@ -77,7 +77,7 @@
 		</ul>
 		<div class="layui-tab-content">
 			<div class="layui-tab-item layui-show">
-				<form class="layui-form form-container" action="<?php echo $this->url('system/systemHandle');?>" method="post">
+				<form class="layui-form form-container" method="post" name="form1">
 					<div class="layui-form-item">
 						<label class="layui-form-label">网站标题</label>
 						<div class="layui-input-block">
@@ -141,12 +141,19 @@
 					<div class="layui-form-item">
 						<label class="layui-form-label">邮箱接收者</label>
 						<div class="layui-input-block">
-							<input type="text" name="site_config[site_email_receiver]" value="<?php echo $site_config['site_email_receiver']; ?>" placeholder="请输入接收者邮箱(多人能以“,” “空格” “;” 分割)" autocomplete="off" class="layui-input">
+							<input type="text" name="site_config[site_email_receiver]" value="<?php echo $site_config['site_email_receiver']; ?>" placeholder="请输入接收者邮箱(多人能以“,” “空格” “;” 分割)" autocomplete="off" class="layui-input"></input>
 						</div>
 					</div>
+
 					<div class="layui-form-item">
 						<div class="layui-input-block">
-							<button class="layui-btn" lay-submit lay-filter="*">提交</button>
+								<input type="button" class="layui-btn layui-btn-primary" value="测试" onClick="test()"  style="width: 150px"></input>
+						</div>
+					</div>
+
+					<div class="layui-form-item">
+						<div class="layui-input-block">
+							<input type="button" class="layui-btn layui-btn-primary" value="提交" onClick="sub()" ></input>
 							<button type="reset" class="layui-btn layui-btn-primary">重置</button>
 						</div>
 					</div>
@@ -155,7 +162,19 @@
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+    function test()
+     {
+         document.form1.action="<?php echo $this->url('api/feedback');?>";
+         document.form1.submit();
+     }
 
+    function sub()
+     {
+         document.form1.action="<?php echo $this->url('system/systemHandle');?>";
+         document.form1.submit();
+     }
+</script>
 <?php if (!defined('BASE_PATH')) exit;?>	<!--底部-->
 	<div class="layui-footer footer">
 		<div class="layui-main">

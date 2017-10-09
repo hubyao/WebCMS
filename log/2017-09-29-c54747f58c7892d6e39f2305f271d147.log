@@ -1,0 +1,97 @@
+2017-09-29 00:00:32 | ::1 | /index.php/blog |SQL语句错误: select count(*) from f_blog语句 =>SQLSTATE[42S02]: Base table or view not found: 1146 Table 'finch.f_blog' doesn't exist
+2017-09-29 00:08:55 | ::1 | /index.php/member/ajax.png |default应用里:controller\member_controller.php不存在
+2017-09-29 00:08:58 | ::1 | /index.php/job/job.html |default应用里:controller\job_controller.php 文件中不存在 job 方法
+2017-09-29 00:08:59 | ::1 | /index.php/member/ajax.png |default应用里:controller\member_controller.php不存在
+2017-09-29 00:09:07 | ::1 | /index.php/templates/res013/min/widget/lightGallery/img/loading.gif |default应用里:controller\templates_controller.php不存在
+2017-09-29 00:09:07 | ::1 | /index.php/templates/res013/min/widget/lightGallery/fonts/lg.woff |default应用里:controller\templates_controller.php不存在
+2017-09-29 00:09:07 | ::1 | /index.php/templates/res013/min/widget/lightGallery/fonts/lg.ttf |default应用里:controller\templates_controller.php不存在
+2017-09-29 00:10:21 | ::1 | /index.php/feedback/feedback.html |default应用里:controller\feedback_controller.php 文件中不存在 feedback 方法
+2017-09-29 00:15:22 | ::1 | /index.php/member/ajax.png |default应用里:controller\member_controller.php不存在
+2017-09-29 00:19:58 | ::1 | /index.php/member/ajax.png |default应用里:controller\member_controller.php不存在
+2017-09-29 00:28:17 | ::1 | /index.php/member/ajax.png |default应用里:controller\member_controller.php不存在
+2017-09-29 00:37:37 | ::1 | /index.php/blog/blog_news/news_2.htm |SQL语句错误: select * from f_boke WHERE id= LIMIT 1语句 =>SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'LIMIT 1' at line 1
+2017-09-29 00:37:41 | ::1 | /index.php/blog/blog_news/blog.html |SQL语句错误: select * from f_boke WHERE id= LIMIT 1语句 =>SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'LIMIT 1' at line 1
+2017-09-29 00:37:45 | ::1 | /index.php/blog/blog_news/news_2.htm |SQL语句错误: select * from f_boke WHERE id= LIMIT 1语句 =>SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'LIMIT 1' at line 1
+2017-09-29 00:40:34 | ::1 | /index.php/public/uploads/201709/201709281037598190826.jpg&x=400&y=400 |default应用里:controller\public_controller.php不存在
+2017-09-29 00:40:34 | ::1 | /index.php/public/uploads/201709/201709281038095612609.jpg&x=400&y=400 |default应用里:controller\public_controller.php不存在
+2017-09-29 00:40:34 | ::1 | /index.php/public/uploads/201709/201709281038263436767.jpg&x=400&y=400 |default应用里:controller\public_controller.php不存在
+2017-09-29 00:40:34 | ::1 | /index.php/public/uploads/201709/201709281038171758880.jpg&x=400&y=400 |default应用里:controller\public_controller.php不存在
+2017-09-29 00:40:36 | ::1 | /index.php/public/uploads/201709/201709281534118977172.jpg&x=400&y=400 |default应用里:controller\public_controller.php不存在
+2017-09-29 00:40:36 | ::1 | /index.php/public/uploads/201709/201709281535232756988.jpg&x=400&y=400 |default应用里:controller\public_controller.php不存在
+2017-09-29 00:40:38 | ::1 | /index.php/public/uploads/201709/201709281038263436767.jpg&x=400&y=400 |default应用里:controller\public_controller.php不存在
+2017-09-29 00:40:38 | ::1 | /index.php/public/uploads/201709/201709281037598190826.jpg&x=400&y=400 |default应用里:controller\public_controller.php不存在
+2017-09-29 00:40:38 | ::1 | /index.php/public/uploads/201709/201709281038171758880.jpg&x=400&y=400 |default应用里:controller\public_controller.php不存在
+2017-09-29 00:40:38 | ::1 | /index.php/public/uploads/201709/201709281038095612609.jpg&x=400&y=400 |default应用里:controller\public_controller.php不存在
+2017-09-29 00:40:38 | ::1 | /index.php/public/uploads/201709/201709281037598190826.jpg&x=400&y=400 |default应用里:controller\public_controller.php不存在
+2017-09-29 00:40:38 | ::1 | /index.php/public/uploads/201709/201709281038095612609.jpg&x=400&y=400 |default应用里:controller\public_controller.php不存在
+2017-09-29 00:40:38 | ::1 | /index.php/public/uploads/201709/201709281038171758880.jpg&x=400&y=400 |default应用里:controller\public_controller.php不存在
+2017-09-29 00:40:38 | ::1 | /index.php/public/uploads/201709/201709281038263436767.jpg&x=400&y=400 |default应用里:controller\public_controller.php不存在
+2017-09-29 00:40:39 | ::1 | /index.php/public/uploads/201709/201709281037467098510.jpg&x=400&y=400 |default应用里:controller\public_controller.php不存在
+2017-09-29 00:40:39 | ::1 | /index.php/public/uploads/201709/201709281038171758880.jpg&x=400&y=400 |default应用里:controller\public_controller.php不存在
+2017-09-29 00:40:39 | ::1 | /index.php/public/uploads/201709/201709281038263436767.jpg&x=400&y=400 |default应用里:controller\public_controller.php不存在
+2017-09-29 00:40:39 | ::1 | /index.php/public/uploads/201709/201709281038095612609.jpg&x=400&y=400 |default应用里:controller\public_controller.php不存在
+2017-09-29 00:40:39 | ::1 | /index.php/public/uploads/201709/201709281037598190826.jpg&x=400&y=400 |default应用里:controller\public_controller.php不存在
+2017-09-29 00:40:40 | ::1 | /index.php/public/uploads/201709/201709281535232756988.jpg&x=400&y=400 |default应用里:controller\public_controller.php不存在
+2017-09-29 00:40:40 | ::1 | /index.php/public/uploads/201709/201709281534118977172.jpg&x=400&y=400 |default应用里:controller\public_controller.php不存在
+2017-09-29 00:40:46 | ::1 | /index.php/public/uploads/201709/201709281037598190826.jpg&x=400&y=400 |default应用里:controller\public_controller.php不存在
+2017-09-29 00:40:46 | ::1 | /index.php/public/uploads/201709/201709281038171758880.jpg&x=400&y=400 |default应用里:controller\public_controller.php不存在
+2017-09-29 00:40:46 | ::1 | /index.php/public/uploads/201709/201709281038263436767.jpg&x=400&y=400 |default应用里:controller\public_controller.php不存在
+2017-09-29 00:40:46 | ::1 | /index.php/public/uploads/201709/201709281038095612609.jpg&x=400&y=400 |default应用里:controller\public_controller.php不存在
+2017-09-29 00:40:47 | ::1 | /index.php/public/uploads/201709/201709281037467098510.jpg&x=400&y=400 |default应用里:controller\public_controller.php不存在
+2017-09-29 00:40:49 | ::1 | /index.php/public/uploads/201709/201709281038263436767.jpg&x=400&y=400 |default应用里:controller\public_controller.php不存在
+2017-09-29 00:40:49 | ::1 | /index.php/public/uploads/201709/201709281038171758880.jpg&x=400&y=400 |default应用里:controller\public_controller.php不存在
+2017-09-29 00:40:49 | ::1 | /index.php/public/uploads/201709/201709281037598190826.jpg&x=400&y=400 |default应用里:controller\public_controller.php不存在
+2017-09-29 00:40:49 | ::1 | /index.php/public/uploads/201709/201709281038095612609.jpg&x=400&y=400 |default应用里:controller\public_controller.php不存在
+2017-09-29 00:40:49 | ::1 | /index.php/public/uploads/201709/201709281037467098510.jpg&x=400&y=400 |default应用里:controller\public_controller.php不存在
+2017-09-29 00:40:53 | ::1 | /index.php/public/uploads/201709/201709281535232756988.jpg&x=400&y=400 |default应用里:controller\public_controller.php不存在
+2017-09-29 00:45:42 | ::1 | /index.php/blog/blog_news/shownews_4.htm |SQL语句错误: select * from f_boke WHERE id= LIMIT 1语句 =>SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'LIMIT 1' at line 1
+2017-09-29 00:45:45 | ::1 | /index.php/blog/blog_news/shownews_4.htm |SQL语句错误: select * from f_boke WHERE id= LIMIT 1语句 =>SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'LIMIT 1' at line 1
+2017-09-29 00:45:49 | ::1 | /index.php/blog/blog_news/shownews_2.htm |SQL语句错误: select * from f_boke WHERE id= LIMIT 1语句 =>SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'LIMIT 1' at line 1
+2017-09-29 00:48:06 | ::1 | /index.php/templates/res013/cache/metinfo.css |default应用里:controller\templates_controller.php不存在
+2017-09-29 00:54:13 | ::1 | /index.php/templates/res013/cache/metinfo.css |default应用里:controller\templates_controller.php不存在
+2017-09-29 00:54:55 | ::1 | /index.php/templates/res013/cache/metinfo.css |default应用里:controller\templates_controller.php不存在
+2017-09-29 00:55:00 | ::1 | /index.php/templates/res013/cache/metinfo.css |default应用里:controller\templates_controller.php不存在
+2017-09-29 00:55:04 | ::1 | /index.php/templates/res013/cache/metinfo.css |default应用里:controller\templates_controller.php不存在
+2017-09-29 09:00:01 | ::1 | /index.php |SQL语句错误: select * from f_zonglanmu WHERE fid=1225语句 =>SQLSTATE[42S02]: Base table or view not found: 1146 Table 'finch.f_zonglanmu' doesn't exist
+2017-09-29 09:00:08 | ::1 | /index.php |SQL语句错误: select * from f_zonglanmu WHERE fid=1225语句 =>SQLSTATE[42S02]: Base table or view not found: 1146 Table 'finch.f_zonglanmu' doesn't exist
+2017-09-29 09:00:10 | ::1 | /index.php |SQL语句错误: select * from f_zonglanmu WHERE fid=1225语句 =>SQLSTATE[42S02]: Base table or view not found: 1146 Table 'finch.f_zonglanmu' doesn't exist
+2017-09-29 09:00:13 | ::1 | /index.php |SQL语句错误: select * from f_zonglanmu WHERE fid=1225语句 =>SQLSTATE[42S02]: Base table or view not found: 1146 Table 'finch.f_zonglanmu' doesn't exist
+2017-09-29 09:01:21 | ::1 | /index.php/public/uploads/201709/201709281038171758880.jpg&x=400&y=400 |default应用里:controller\public_controller.php不存在
+2017-09-29 09:01:21 | ::1 | /index.php/public/uploads/201709/201709281037598190826.jpg&x=400&y=400 |default应用里:controller\public_controller.php不存在
+2017-09-29 09:01:21 | ::1 | /index.php/public/uploads/201709/201709281038095612609.jpg&x=400&y=400 |default应用里:controller\public_controller.php不存在
+2017-09-29 09:01:21 | ::1 | /index.php/public/uploads/201709/201709281038263436767.jpg&x=400&y=400 |default应用里:controller\public_controller.php不存在
+2017-09-29 09:01:23 | ::1 | /index.php/public/uploads/201709/201709281534118977172.jpg&x=400&y=400 |default应用里:controller\public_controller.php不存在
+2017-09-29 09:01:24 | ::1 | /index.php/public/uploads/201709/201709281535232756988.jpg&x=400&y=400 |default应用里:controller\public_controller.php不存在
+2017-09-29 09:01:24 | ::1 | /index.php/public/uploads/201709/201709281038095612609.jpg&x=400&y=400 |default应用里:controller\public_controller.php不存在
+2017-09-29 09:01:24 | ::1 | /index.php/public/uploads/201709/201709281038263436767.jpg&x=400&y=400 |default应用里:controller\public_controller.php不存在
+2017-09-29 09:01:25 | ::1 | /index.php/public/uploads/201709/201709281037598190826.jpg&x=400&y=400 |default应用里:controller\public_controller.php不存在
+2017-09-29 09:01:25 | ::1 | /index.php/public/uploads/201709/201709281038171758880.jpg&x=400&y=400 |default应用里:controller\public_controller.php不存在
+2017-09-29 09:01:25 | ::1 | /index.php/public/uploads/201709/201709281038095612609.jpg&x=400&y=400 |default应用里:controller\public_controller.php不存在
+2017-09-29 09:01:25 | ::1 | /index.php/public/uploads/201709/201709281038171758880.jpg&x=400&y=400 |default应用里:controller\public_controller.php不存在
+2017-09-29 09:01:25 | ::1 | /index.php/public/uploads/201709/201709281038263436767.jpg&x=400&y=400 |default应用里:controller\public_controller.php不存在
+2017-09-29 09:01:25 | ::1 | /index.php/public/uploads/201709/201709281037598190826.jpg&x=400&y=400 |default应用里:controller\public_controller.php不存在
+2017-09-29 09:01:26 | ::1 | /index.php/public/uploads/201709/201709281037467098510.jpg&x=400&y=400 |default应用里:controller\public_controller.php不存在
+2017-09-29 09:01:26 | ::1 | /index.php/include/thumb.php |default应用里:controller\include_controller.php不存在
+2017-09-29 09:01:41 | ::1 | /index.php/member/ajax.png |default应用里:controller\member_controller.php不存在
+2017-09-29 09:01:42 | ::1 | /index.php/member/ajax.png |default应用里:controller\member_controller.php不存在
+2017-09-29 09:12:02 | ::1 | /index.php/public/uploads/201709/201709281038171758880.jpg&x=400&y=400 |default应用里:controller\public_controller.php不存在
+2017-09-29 09:12:02 | ::1 | /index.php/public/uploads/201709/201709281038095612609.jpg&x=400&y=400 |default应用里:controller\public_controller.php不存在
+2017-09-29 09:12:02 | ::1 | /index.php/public/uploads/201709/201709281037598190826.jpg&x=400&y=400 |default应用里:controller\public_controller.php不存在
+2017-09-29 09:12:02 | ::1 | /index.php/public/uploads/201709/201709281038263436767.jpg&x=400&y=400 |default应用里:controller\public_controller.php不存在
+2017-09-29 09:12:03 | ::1 | /index.php/include/thumb.php |default应用里:controller\include_controller.php不存在
+2017-09-29 09:12:09 | ::1 | /index.php/public/uploads/201709/201709281037598190826.jpg&x=400&y=400 |default应用里:controller\public_controller.php不存在
+2017-09-29 09:12:09 | ::1 | /index.php/public/uploads/201709/201709281038095612609.jpg&x=400&y=400 |default应用里:controller\public_controller.php不存在
+2017-09-29 09:12:09 | ::1 | /index.php/public/uploads/201709/201709281038171758880.jpg&x=400&y=400 |default应用里:controller\public_controller.php不存在
+2017-09-29 09:12:09 | ::1 | /index.php/public/uploads/201709/201709281038263436767.jpg&x=400&y=400 |default应用里:controller\public_controller.php不存在
+2017-09-29 09:12:09 | ::1 | /index.php/public/uploads/201709/201709281534118977172.jpg&x=400&y=400 |default应用里:controller\public_controller.php不存在
+2017-09-29 09:12:09 | ::1 | /index.php/public/uploads/201709/201709281037467098510.jpg&x=400&y=400 |default应用里:controller\public_controller.php不存在
+2017-09-29 09:12:09 | ::1 | /index.php/public/uploads/201709/201709281535232756988.jpg&x=400&y=400 |default应用里:controller\public_controller.php不存在
+2017-09-29 09:12:10 | ::1 | /index.php/include/thumb.php |default应用里:controller\include_controller.php不存在
+2017-09-29 09:12:10 | ::1 | /index.php/public/uploads/201709/201709281534118977172.jpg&x=400&y=400 |default应用里:controller\public_controller.php不存在
+2017-09-29 09:12:10 | ::1 | /index.php/public/uploads/201709/201709281535232756988.jpg&x=400&y=400 |default应用里:controller\public_controller.php不存在
+2017-09-29 09:12:14 | ::1 | /index.php/public/uploads/201709/201709281037598190826.jpg&x=400&y=400 |default应用里:controller\public_controller.php不存在
+2017-09-29 09:12:14 | ::1 | /index.php/public/uploads/201709/201709281038095612609.jpg&x=400&y=400 |default应用里:controller\public_controller.php不存在
+2017-09-29 09:12:14 | ::1 | /index.php/public/uploads/201709/201709281038171758880.jpg&x=400&y=400 |default应用里:controller\public_controller.php不存在
+2017-09-29 09:12:14 | ::1 | /index.php/public/uploads/201709/201709281038263436767.jpg&x=400&y=400 |default应用里:controller\public_controller.php不存在
+2017-09-29 09:12:31 | ::1 | /index.php/member/ajax.png |default应用里:controller\member_controller.php不存在
+2017-09-29 09:26:39 | ::1 | /index.php/webftb |default应用里:controller\webftb_controller.php不存在

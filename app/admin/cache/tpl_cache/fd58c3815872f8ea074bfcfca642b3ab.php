@@ -95,7 +95,7 @@
 						<button class="layui-btn">搜索</button>
 					</div>
 					<div class="rightBtn">
-						<a href="<?php echo $this->url('content/add',['pid'=>$pid]);?>" class="layui-btn layui-btn-small layui-btn-normal ajax-link">添加新内容</a>
+						<a href="<?php echo $this->url('content/add',['pid'=>$pid]);?>" class="layui-btn layui-btn-small layui-btn-normal ajax-link layui-btn" lay-submit lay-filter="*">添加新内容</a>
 					</div>
 				</form>
 				<hr>
@@ -124,7 +124,7 @@
 							<?php } ?>
 						<?php } ?></td>
 						<?php foreach($fielden as $k1=>$v1) { ?>
-						<td><?php echo $v[$v1]; ?></td>
+						<td><?php if(explode("/", $v[$v1])[1] == 'public') { ?> <img src="<?php echo $v[$v1]; ?>" style="width: 200px;height: 140px;"> <?php } else { ?> <p><?php echo $v[$v1]; ?></p> <?php } ?></td>
 						<?php } ?>
 						<td nowrap><?php echo date('Y-m-d',$v['add_time']);?></td>
 						<td align="right" nowrap>
@@ -197,6 +197,19 @@
 					});
 				});
 				</script>
+<script type="text/javascript">
+$(document).ready(function(){
+//限制字符个数
+$("p").each(function(){
+   var maxwidth=50;
+if($(this).text().length>maxwidth){
+	$(this).text($(this).text().substring(0,maxwidth));
+	$(this).html($(this).html()+'...');
+	}
+});
+});
+
+</script>
 			</div>
 		</div>
 	</div>

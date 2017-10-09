@@ -1,12 +1,12 @@
 <?php if (!defined('BASE_PATH')) exit;?><!DOCTYPE HTML>
 <html>
 <head>
-<title>意见反馈-科技公司</title>
+<title>加入我们-关于-科技公司</title>
 <meta name="renderer" content="webkit">
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-<meta name="generator" content="91mb 5.3.16"  data-variable="http://show.91mb.com.cn/muban/res013/323/,cn,128,128,8,res013" />
+<meta name="generator" content="91mb 5.3.16"  data-variable="http://show.91mb.com.cn/muban/res013/323/,cn,127,,6,res013" />
 <meta name="description" content="网站描述，一般显示在搜索引擎搜索结果中的描述文字，用于介绍网站，吸引浏览者点击。" />
 <meta name="keywords" content="科技公司网站模板|科技公司企业网站模板" />
 <link href="/public/default/images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
@@ -66,7 +66,7 @@
 </nav>
 
 <div class="met-banner-ny vertical-align text-center" style=''>
-	<h2 class="vertical-align-middle">关于</h2>
+	<h1 class="vertical-align-middle">关于</h1>
 </div>
 
 		<div class="met-column-nav ">
@@ -86,115 +86,90 @@
 			</div>
 		</div>
 
-<section class="met-feedback animsition">
+<section class="met-job animsition">
 	<div class="container">
 		<div class="row">
-			<div class="met-feedback-body">
-				<form method='POST' class="met-form met-form-validation"  enctype="multipart/form-data"  action='http://show.91mb.com.cn/muban/res013/323/feedback/index.php?action=add'>
-				<input type='hidden' name='lang' value='cn' />
-				<input type='hidden' name='fdtitle' value='意见反馈' />
-				<input type='hidden' name='ip' value='222.240.227.26' />
-				<input type='hidden' name='id' value='128' />
-				<input type='hidden' name='fid_url' value='0' />
+			<div class="met-job-list met-page-ajax">
 
+<div class="widget widget-article widget-shadow">
+	<div class="widget-body">
+		<h3 class="widget-title">
+			iOS应用开发高级工程师
+		</h3>
+		<p class="widget-metas">
+			<span>2016-05-24</span>
+			<span><i class="icon wb-map margin-right-5" aria-hidden="true"></i>北京</span>
+			<span><i class="icon wb-user margin-right-5" aria-hidden="true"></i>若干</span>
+			<span><i class="icon wb-payment margin-right-5" aria-hidden="true"></i>面议</span>
+		</p>
+		<hr>
+		<div class="met-editor lazyload clearfix"><p>工作职责：<span class="Apple-tab-span" style="white-space: pre;">	</span></p><ol class=" list-paddingleft-2" style="list-style-type: decimal;"><li><p>负责产品和业务iOS平台软件的研发和维护</p></li><li><p>参与产品和业务相关技术研究、架构制定</p></li></ol><p>工作要求：<span class="Apple-tab-span" style="white-space:pre">	</span></p><ol class=" list-paddingleft-2" style="list-style-type: decimal;"><li><p>精通Objective-C/SWIFT/C/C++等语言和面向对象编程思想，熟练掌握常用的设计模式；</p></li><li><p>硕士或以上学历，计算机、通信、电子等相关专业毕业；</p></li><li><p>具备2年以上iOS开发经验，参与过中型以上项目开发，并承担关键工作；</p></li><li><p>对数据结构、基本算法熟练掌握，并具备基本的算法设计能力；</p></li><li><p>思维敏捷，思路清晰，工作积极主动，能够承受较大工作压力。</p></li></ol></div>
+		<hr>
+		<div class="widget-body-footer margin-top-0">
+			<a class="btn btn-outline btn-squared btn-primary met-job-cvbtn" href="javascript:void(0)" data-jobid="27" data-cvurl="cv.php?lang=cn&selected">在线应聘</a>
+		</div>
+	</div>
+</div>
 
-				<div class="form-group">
+<div class="widget widget-article widget-shadow">
+	<div class="widget-body">
+		<h3 class="widget-title">
+			数据产品运营
+		</h3>
+		<p class="widget-metas">
+			<span>2016-05-24</span>
+			<span><i class="icon wb-map margin-right-5" aria-hidden="true"></i>北京</span>
+			<span><i class="icon wb-user margin-right-5" aria-hidden="true"></i>若干</span>
+			<span><i class="icon wb-payment margin-right-5" aria-hidden="true"></i>面议</span>
+		</p>
+		<hr>
+		<div class="met-editor lazyload clearfix"><p><strong>工作职责：</strong><span class="Apple-tab-span" style="white-space: pre;"></span></p><ul class=" list-paddingleft-2" style="list-style-type: disc;"><li><p>负责数据类产品的运营及品牌市场推广工作，提升产品知名度</p></li><li><p>定期发布行业报告，提升数据产品的行业影响力</p></li><li><p>熟悉当前流行的微信、知乎等新媒体的传播规则，制定运营策略</p></li><li><p>负责跨内外产品合作，媒体合作等，协调可用资源，协同推进项目整体规划</p></li><li><p>对运营数据进行分析，并以此为依据不断优化运营手段</p></li></ul><p><strong>工作要求：</strong><span class="Apple-tab-span" style="white-space:pre"></span></p><ul class=" list-paddingleft-2" style="list-style-type: disc;"><li><p>熟悉互联网行业，1年以上产品运营工作经验</p></li><li><p>能够理解数据产品的商业模式和产业生态</p></li><li><p>有较强的市场活动策划能力，文案、阐述能力优秀、创意能力突出，思维活跃，熟悉创新媒体的营销方式</p></li><li><p>具有良好的沟通能力、推动能力、协调能力，拥有强烈的责任心和团队合作精神</p></li><li><p>有数据统计类、大数据相关领域产品的运营、推广经验者优先</p></li></ul></div>
+		<hr>
+		<div class="widget-body-footer margin-top-0">
+			<a class="btn btn-outline btn-squared btn-primary met-job-cvbtn" href="javascript:void(0)" data-jobid="26" data-cvurl="cv.php?lang=cn&selected">在线应聘</a>
+		</div>
+	</div>
+</div>
 
-					<label class="control-label">反馈类型</label>
-
-					<div>
-						
-								<div class="radio-custom radio-primary">
-									<input
-										name='para165'
-										type="radio"
-										checked
-										value='产品建议'
-										id="para165_1"
-									>
-									<label for="para165_1">产品建议</label>
-								</div>
-								<div class="radio-custom radio-primary">
-									<input
-										name='para165'
-										type="radio"
-										
-										value='网站设计'
-										id="para165_2"
-									>
-									<label for="para165_2">网站设计</label>
-								</div>
-								<div class="radio-custom radio-primary">
-									<input
-										name='para165'
-										type="radio"
-										
-										value='文章内容'
-										id="para165_3"
-									>
-									<label for="para165_3">文章内容</label>
-								</div>
-								<div class="radio-custom radio-primary">
-									<input
-										name='para165'
-										type="radio"
-										
-										value='其它'
-										id="para165_4"
-									>
-									<label for="para165_4">其它</label>
-								</div><span class="help-block"> </span>
-					</div>
-				</div>
-
-				<div class="form-group">
-
-					<div>
-						<textarea name='para166' class='form-control' data-fv-notempty="true" data-fv-message="不能为空" placeholder='反馈内容 ' rows='5'></textarea>
-					</div>
-				</div>
-
-				<div class="form-group">
-
-					<div>
-						<input name='para167' class='form-control' type='text' placeholder='您的邮箱 ' data-fv-notempty="true" data-fv-message="不能为空" />
-					</div>
-				</div>
-
-
-				<div class="form-group">
-
-					<div class="input-group input-group-icon">
-						<input
-							name='code'
-							type="text"
-							class="form-control"
-							placeholder = "验证码"
-							data-fv-notempty = "true"
-							data-fv-message = "不能为空"
-						>
-						<span class="input-group-addon">
-							<img
-								src="../member/ajax.png"
-								data-url="http://show.91mb.com.cn/muban/res013/323/member/ajax.php?action=code"
-								class="met-form-codeimg"
-								alt="看不清？点击更换验证码"
-								title="看不清？点击更换验证码"
-								onclick='codeimgRefresh();'
-							/>
-						</span>
-					</div>
-				</div>
-
-
-					<div class="form-group margin-bottom-0">
-						<button type="submit" class="btn btn-primary btn-lg btn-block btn-squared">提交</button>
-					</div>
-				</form>
 			</div>
+
+<div class="hidden-xs">
+		    <div class='met_pager'>
+			<span class='PreSpan'>上一页</span><a href="job.html" class='Ahover'>1</a><span class='NextSpan'>下一页</span>
+			    <span class='PageText'>转至第</span>
+			    <input type='text' id='metPageT' data-pageurl='job.php?lang=cn&page=||1' value='1' />
+			    <input type='button' id='metPageB' value='页' />
+		    </div>
+		</div>
+<div class="met-page-ajax-body visible-xs-block invisible" data-plugin="appear" data-animate="slide-bottom" data-repeat="false">
+	<button type="button" class="btn btn-default btn-block btn-squared ladda-button" id="met-page-btn" data-style="slide-left" data-url="/muban/res013/323/job/?lang=cn&class1=127&class2=0&mbpagelist=1" data-page="1"><i class="icon wb-chevron-down margin-right-5" aria-hidden="true"></i>加载更多</button>
+</div>
+
 		</div>
 	</div>
 </section>
+
+<div class="modal fade modal-primary" id="met-job-cv" aria-hidden="true" role="dialog" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form method='POST' class="met-form"  enctype="multipart/form-data" action='save.htm'>
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="modal-title">在线应聘</h4>
+                </div>
+                <div class="modal-body padding-bottom-0">
+                </div>
+                <div class="modal-footer text-left">
+                    <button type="submit" class="btn btn-primary btn-squared">提交</button>
+                    <button type="button" class="btn btn-default btn-squared" data-dismiss="modal">取消</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 
 
 <?php if (!defined('BASE_PATH')) exit;?><div class="met-footnav text-center">

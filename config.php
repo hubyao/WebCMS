@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 //APP配置
 $config['DEBUG']= true;	//是否开启调试模式，true开启PHP系统错误报告，false关闭PHP系统错误报告  注意=非代码里自定义的错误

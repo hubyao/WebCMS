@@ -1,13 +1,13 @@
 <?php if (!defined('BASE_PATH')) exit;?><!DOCTYPE HTML>
 <html>
 <head>
-<title>售后政策-科技公司</title>
+<title>Oculus在伦敦组建VR团队-科技公司</title>
 <meta name="renderer" content="webkit">
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-<meta name="generator" content="91mb 5.3.16"  data-variable="http://show.91mb.com.cn/muban/res013/323/,cn,129,129,1,res013" />
-<meta name="description" content="您可以通过400电话或者在线客服，咨询一系列售前、售中、售后问题。我们的客服团队全心全意为您提供细致周到、专业服务，同时，您可以根据产品进入相关内容板块，了解更多相关知识。" />
+<meta name="generator" content="91mb 5.3.16"  data-variable="http://show.91mb.com.cn/muban/res013/323/,cn,122,51,2,res013" />
+<meta name="description" content="自从2014年斥资20亿美元收购Oculus以来，Facebook作为社交平台巨头一直在VR发展的前沿。而随着市场发展，VR在美国和中国等地刮起狂潮。由此，Facebook准备扩大疆域，向英国瞄准。根据外媒《每日电讯报》报道，Facebook近日在英国伦敦设立一个VR开发中心，成为旗下Oculus在欧洲的首个基地。据了解，Oculus英国团队的负责人是谷歌前高级工程师Mike LeBeau，是谷歌" />
 <meta name="keywords" content="科技公司网站模板|科技公司企业网站模板" />
 <link href="/public/default/images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 <link rel='stylesheet' href='/public/default/css/metinfo.css'>
@@ -64,53 +64,93 @@
 		</div>
 	</div>
 </nav>
-<div class="met-banner-ny vertical-align text-center" style=''>
-	<h2 class="vertical-align-middle">支持</h2>
-</div>
-<div class="met-column-nav ">
+<section class="met-shownews animsition">
 	<div class="container">
 		<div class="row">
-			<div class="sidebar-tile">
-				<ul class="met-column-nav-ul invisible-xs">
-				<?php foreach($service_nav as $k=>$v) { ?>
-					<li> <a href="<?php echo $v['href']; ?>" title="<?php echo $v['name']; ?>" class="link <?php if(explode('/',$_SERVER['PHP_SELF'])[2] == explode('/',$v['href'])[1]) { ?>active<?php } ?>">售后政策</a> </li>
-				<?php } ?>
-				</ul>
-			</div>
-		</div>
-	</div>
-</div>
-<section class="met-show animsition">
-	<div class="container">
-		<div class="row">
-			<div class="met-editor lazyload clearfix">
-				<div>
-					<p style="text-align: center;"><br/>
-					</p>
-					<?php foreach($list['content'] as $k=>$v) { ?>
-					<p style="text-align: center;"><?php echo $v; ?></p>
-					<?php } ?>
-					<p><br/>
-					</p>
-					<p><br/>
-					</p>
-					<hr/>
-					<p><?php echo $list[text]; ?></p>
-					<p><br/>
-					</p>
-					<p><strong><?php echo $list['title']; ?></strong></p>
-					<ul class=" list-paddingleft-2" style="list-style-type: disc;">
-					<?php foreach($list['text2'] as $k=>$v) { ?>
-						<li>
+			<div class="col-md-9 met-shownews-body">
+				<div class="row">
+					<div class="met-shownews-header">
+						<h1><?php echo $list['title']; ?></h1>
+						<div class="info">
+							<span><?php echo date('Y-m-d H:i:s',$list['add_time']);?></span>
+							<span>admin</span>
+							<span><i class="icon wb-eye margin-right-5" aria-hidden="true"></i><?php echo $list['view']; ?></span>
+						</div>
+					</div>
+					<div class="met-editor lazyload clearfix">
+						<div>
+						<img class="imgloading" height="200" data-original="<?php echo $list['image']; ?>" alt="1464075489148330.jpg" scr="<?php echo $list['image']; ?>"/>
+						<?php foreach($list['details'] as $k=>$v) { ?>
 							<p><?php echo $v; ?></p>
-						</li>
-					<?php } ?>
-					</ul>
+						<?php } ?>
+						<div id="metinfo_additional"></div></div>
+
+					</div>
+					<div class="met-shownews-footer">
+						<ul class="pager pager-round">
+							<li class="previous <?php echo $title[$title_id-1]?'':'disabled'; ?>">
+								<a href="<?php if($title[$title_id-1]) { ?><?php echo $this->url('blog/blog_news',['id'=>$title[$title_id-1]['id']]);?><?php } else { ?>'#'<?php } ?>" title="<?php echo $title[$title_id-1]?$title[$title_id-1]['title']:''; ?>">
+									上一篇
+									<span aria-hidden="true" class='hidden-xs'>:<?php echo $title[$title_id-1]?$title[$title_id-1]['title']:'没有了'; ?></span>
+								</a>
+							</li>
+							<li class="next <?php echo $title[$title_id+1]?'':'disabled'; ?>">
+								<a href="<?php if($title[$title_id+1]) { ?><?php echo $this->url('blog/blog_news',['id'=>$title[$title_id+1]['id']]);?><?php } else { ?>'#'<?php } ?>" title="<?php echo $title[$title_id-1]?$title[$title_id-1]['title']:''; ?>">
+									下一篇
+									<span aria-hidden="true" class='hidden-xs'>：<?php echo $title[$title_id+1]?$title[$title_id+1]['title']:'没有了'; ?></span>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="row">
+
+					<div class="met-news-bar">
+
+                        <form method='get' action="../search/search.htm">
+                            <input type='hidden' name='lang' value='cn' />
+                            <input type='hidden' name='class1' value='108' />
+                            <div class="form-group">
+                                <div class="input-search">
+                                    <button type="submit" class="input-search-btn"><i class="icon wb-search" aria-hidden="true"></i></button>
+                                    <input type="text" class="form-control" name="searchword" placeholder="Search">
+                                </div>
+                            </div>
+                        </form>
+
+						<div class="recommend news-list-md">
+							<h3>为您推荐</h3>
+							<ul class="list-group list-group-bordered">
+
+								<?php foreach($list_hot as $k=>$v) { ?>
+								<li class="list-group-item"><a href="<?php echo $this->url('blog/blog_news',['id'=>$v['id']]);?>" title="<?php echo $v['title']; ?>" target='_self'><?php echo $v['title']; ?></a></li>
+								<?php } ?>
+
+							</ul>
+						</div>
+
+                        <ul class="column">
+                            <li><a href="/blog" title="所有文章" target='_self'>所有文章</a></li>
+
+                            <li><a href="/blog" class="active" title="产品资讯">产品资讯</a></li>
+
+                            <li><a href="/blog"  title="行业动态">行业动态</a></li>
+
+                            <li><a href="/blog"  title="国际资讯">国际资讯</a></li>
+
+                        </ul>
+
+					</div>
+
 				</div>
 			</div>
 		</div>
 	</div>
 </section>
+
+
 <?php if (!defined('BASE_PATH')) exit;?><div class="met-footnav text-center">
 	<div class="container">
 		<div class="row mob-masonry">

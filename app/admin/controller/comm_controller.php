@@ -138,5 +138,41 @@ class comm_controller extends controller{
 		return $r_page;
 	}
 
+	public function send_mail($title,$content,$email_sender,$email_password,$email_smtp,$email_receiver){
+		//连接数据库
+		$maillist=$this->db->table('email')->where('id=1')->get();
+		//后台收件人邮箱
+		$toemail=$email_receiver;
+		$arry = preg_split("/[\s,;]+/",$toemail);
+		$maile = preg_split("/[\s@]+/",strstr($email_sender, '@'));
+		require './lib/PHPMailer-master/PHPMailerAutoload.php';
+
+		$mail = new PHPMailer;
+		$mail->isSMTP();               // Set mailer to use SMTP
+		$mail->Host = "smtp.".$maile[1];  // Specify main and backup SMTP servers
+		$mail->SMTPAuth = true;          // Enable SMTP authentication
+		$mail->Username = $email_sender;      // SMTP username
+		$mail->Password = $email_password;                  // SMTP password
+		$mail->SMTPSecure = 'TLS';
+		$mail->Port = $email_smtp;   // TCP port to connect to
+		$mail->CharSet  = "UTF-8"; //字符集 
+		$mail->Encoding = "base64"; //编码方式
+		$mail->From = $email_sender;
+		$mail->FromName = $title;
+		foreach($arry as $key=>$val){
+		            $mail->addAddress($val);
+		}
+		$mail->isHTML(true);      // Set email format to HTML
+		//  var_dump($mail);
+		// die();
+		$mail->Subject = $title;
+		$mail->Body    = $content;
+			if(!$mail->send()){
+				F::redirect("邮箱发送失败，请检查邮箱是否错误",'/admin/system',1);
+			}else{
+				F::redirect("邮箱发送成功，该邮箱可用",'/admin/system',1);
+			}
+	}
+
 }
 ?>

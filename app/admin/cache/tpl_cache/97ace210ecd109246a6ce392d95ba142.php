@@ -108,7 +108,10 @@
 						<?php echo $v['name']; ?>
 						<i><?php echo $v['field_name']; ?></i>
 						<em data-url="<?php echo $this->url('section/field_del',['pid'=>$pid,'id'=>$v['id']]);?>" class="ajax-delete" title="确定要删除字段<?php echo $v['name']; ?>？">×</em>
-						<a href="<?php echo $this->url('section/field_move',['pid'=>$pid,'id'=>$v['id']]);?>" title="向下移动">∨</a>
+						<form class="layui-form" action="<?php echo $this->url('section/field_move',['pid'=>$pid,'id'=>$v['id']]);?>" method="post">
+							<a href="javascript:;"  title="向下移动" lay-submit lay-filter="*">∨</a>
+						</form>
+						
 					</li>
 					<?php } ?>
 					<li data-id="0" class="add"><i class="layui-icon">&#xe61f;</i> 增加新字段</li>
