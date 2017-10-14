@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 class content_controller extends comm_controller{
 	public $fid_str='';
 
@@ -145,7 +145,10 @@ class content_controller extends comm_controller{
 		$list_section = $this->D1('section',$pid);
 
 		//读取需要显示的标题
-		$showTitle = $this->D2('field','is_show=1 and pid='.$pid);
+		$showTitle = $this->D3('field','is_show=1 and pid='.$pid,'sort');
+		// 读取所有的标题[修复]
+		$Title=$this->db->table('field')->where('pid='.$pid)->order('sort')->getlist();
+
 		$fieldStr = '';
 		$fieldTitle = array();
 		$fielden = array();
@@ -158,6 +161,11 @@ class content_controller extends comm_controller{
 				$key_search .= " or ".$v['field_name']." like '%".$keyword."%'";
 			}
 		}
+		// [修复]
+		foreach($Title as $k=>$v){
+			$fielden_title[] = $v['field_name'];
+		}
+
 
 		// 搜索条件
 		$where = '1=1';
@@ -199,13 +207,14 @@ class content_controller extends comm_controller{
 		$this->view['list_section'] = $list_section;
 		$this->view['fieldTitle'] = $fieldTitle;//中文字段名称
 		$this->view['fielden'] = $fielden;//英文字段名称
-		F::session("Englishtitle",$fielden);
+		F::session("Englishtitle",$fielden_title);//[修复]
 		$this->view('content_index.html');
 	}
 
 	/**
-	 * 复制数据
+	 * 复制数据/删除数据
 	 * @return [type] [页面跳转]
+	 * [更新:删除多条数据]
 	 */
 	public function movedata(){
 		$pid = F::input_int('get.pid');
@@ -216,6 +225,11 @@ class content_controller extends comm_controller{
 		$table = $this->db->pre($section['ename']);
 		if($flag=='move'){
 			$sql = 'update '.$table.' set fid='.$newfid.' where id in('.$ids.')';
+			$str='移动成功';
+		}
+		else if($flag=='delete'){
+			$sql = 'delete from '.$table.' where id in('.$ids.')';
+			$str='删除成功';
 		}
 		else{
 			$fields = 'pid,fid,is_pass,is_best,add_time';
@@ -224,8 +238,12 @@ class content_controller extends comm_controller{
 				$fields .= ','.$v['field_name'];
 			}
 			$sql = 'insert into '.$table.'('.$fields.') select '.str_replace(',fid,',','.$newfid.',',$fields).' from '.$table.' where id in ('.$ids.')';
+			$str='复制成功';
 		}
-		$this->exec($sql);
+		$result=$this->exec($sql);
+		if($result){
+			F::redirect($str);
+		}
 		$url = $this->url('content/index',['pid'=>$pid,'fid'=>$newfid]);
 		F::go($url);
 	}
@@ -318,13 +336,27 @@ class content_controller extends comm_controller{
 				$field_arr[$k]['html']=$this->type2html($v);
 			}
 		}
-
+		$this->imgresource();
 		$this->view['tree'] = $tree;
 		$this->view['field_arr'] = $field_arr;
 		$this->view['list_section'] = $list_section;
 		$this->view['id']=$id;
 		$this->view['item']=$item;
 		$this->view('content_add.html');
+	}
+
+	//浏览服务器图片[更新浏览服务器图片资源方法]
+	public function imgresource(){
+	$img = array('gif','png','jpg');//所有图片的后缀名
+	$dir = 'public/uploads/*/';//文件夹名称
+	$pic = array();
+	foreach($img as $k=>$v)
+	{
+    $pattern = $dir.'*.'.$v;
+    $all = glob($pattern);
+    $pic = array_merge($pic,$all);
+	}
+	$this->view['pic'] = $pic;
 	}
 
 	/**
@@ -335,9 +367,10 @@ class content_controller extends comm_controller{
 			$data = F::input('post.');
 			unset($data['file']);
 			$id = $data['id'];
+			
 			$pid = $data['pid'];
-			$data['add_time']=  time();
-			// p($data);
+			$data['add_time']=time();
+			
 			// 检查是否有必填项未填的
 			$field_arr = $this->db->table('field')->where('is_must=1 and pid='.$pid)->order('sort')->getlist();
 			foreach($field_arr as $k=>$v){
@@ -386,11 +419,12 @@ class content_controller extends comm_controller{
 			}
 		}
 	}
+
 	/**
 	*移动内容
+	*
 	**/
-
-public function content_move(){
+	public function content_move(){
 		$pid = $this->checkPid();
 		$action = F::input('get.action');
 		$id = F::input_int('get.id');
@@ -455,6 +489,35 @@ public function content_move(){
 			$str = '参数错误';
 		}
 		F::redirect($str,$this->url('content/index',['pid'=>$pid]),1);
+	}
+
+	/**
+	 * 删除图片[新增:多图上传删除方法]
+	 */
+	public function img_del(){
+		$id=F::input('get.id ');//标记数据
+		$fname=F::input('get.fname');//动态获取列名
+		$img_id=F::input('get.image_id');//获取删除的图片路径
+		$prefix=F::input('get.prefix');//图片前缀路径
+		$pid=F::input('get.pid');//动态获取表名
+		$all=$this->db->table('section')->where("id=".$pid)->get();
+		$table=$all['ename'];//得到表名
+		$all1=$this->db->table($table)->where("id=".$id)->get();
+		$shuzu=$all1[$fname];
+		$shuzu=str_replace(",".$img_id,"",$shuzu);
+		$shuzu=str_replace($img_id.",","",$shuzu);
+		$shuzu=str_replace($img_id,"",$shuzu);
+		if($shuzu===$prefix){
+			$shuzu='';
+		}
+		$sql=" update f_".$table." set ".$fname." = '".$shuzu."' where id = ".$id;
+		if($this->db->query($sql)){
+
+			F::redirect('删除成功','',1);
+		}else{
+			F::redirect('删除失败','',1);
+		}
+
 	}
 
 	/**
@@ -555,6 +618,7 @@ public function content_move(){
 			}
 			$html .= '</div></div>';
 		}
+
 		//下拉列表
 		elseif($field_type=='select'){
 			$html = '<div class="layui-form-item">
@@ -570,6 +634,7 @@ public function content_move(){
 			}
 			$html .= '</select></div></div>';
 		}
+
 		//文件上传
 		elseif($field_type=='upload'){
 			$html = '<div class="layui-form-item">
@@ -580,17 +645,78 @@ public function content_move(){
 					</div>
 				</div>';
 		}
-		//单图片上传
+
+		//单图片上传[更新:单图片预览/浏览服务器图片资源]
 		elseif($field_type=='photo'){
 			$html = '<div class="layui-form-item">
 					<label class="layui-form-label">'.$cname.'</label>
 					<div class="layui-input-block">
-						<input type="text" '.$idname.' value="'.$val.'" class="layui-input layui-input-inline">
+						<input type="text" '.$idname.' value="'.$val.'" class="layui-input layui-input-inline" onmouseover="javascript:document.preview.style.display=\'block\';"
+						 onmouseout="javascript:document.preview.style.display=\'none\';">
 						<input type="file" name="file" data-for="'.$fname.'" lay-type="images" lay-title="上传'.$cname.'" class="layui-upload-file">
+						<input type="button"   data-for="'.$fname.'" lay-type="images" lay-title="浏览服务器资源"  class="layui-upload-file resource" >
+						<img src="'.$val.'" onerror="this.src=\'/public/admin/images/preview_one404.png\'"style="display:none;width: 300px;
+    		height: 200px; position: absolute;z-index:100" name ="preview" >
 					</div>
-				</div>';
+				</div>
+			<script type="text/javascript">
+				$(function(){
+					$("body").on("click",".resource",function(){//批量增加分类
+						var layer = layui.layer;
+						layer.open({
+							type:1,
+							title:"浏览服务器资源",
+							resize:false,
+							area: ["1050px", "600px"],
+							content:$(".img_resource")
+						});
+					});
+				$(".resource").off("click").on("click",function(){
+					var $name = $(this).data("for");
+					$(".img_resource img").off("click");
+						$(".img_resource img").on("click",function(){
+							$("#"+$name).val($(this).data("id"));
+							layer.closeAll();
+						});
+					});
+				});
+			</script>
+				';
+
+
 		}
-		//日期选择
+
+		//多图片上传[新增:多个图片上传\修改时图片预览]
+		elseif($field_type=='photos'){
+				$image_name=trim(strrchr($val, '/'),'/');
+				$array=explode('/',$val);
+				$prefix='';
+				for($i=0;$i<sizeof($array)-1;$i++){
+					$prefix.=$array[$i]."/";
+				}
+
+						$images=preg_split("/[\s,;]+/",$image_name);
+						$imageTag='';
+						if($val){
+							for($i=0;$i<sizeof($images);$i++){
+							$imageTag.="<img style='border: 1px solid #CDCDB4;margin-right: 10px;padding: 10px;'src='".$prefix."".$images[$i]."' height='70' width='110'/><a href='javascript:;'><em data-url='/admin/content/img_del/id-".str_replace(".html","",explode("-", $_SERVER['PHP_SELF'])[3])."-pid-".str_replace(".html","",explode("-", $_SERVER['PHP_SELF'])[1])."-image_id-".$images[$i]."-prefix-".$prefix."-fname-".$fname."' class='ajax-delete' style='position: absolute;margin-top: 0px;margin-left: -24px;color: #888;font-weight: bold;' title='确定要删除该图片'>×</em></a>";
+							}
+						}
+
+
+			$html = '<div class="layui-form-item">
+					<label class="layui-form-label">'.$cname.'</label>
+					<div class="layui-input-block" style="margin-bottom: 10px;">
+						<input type="text" '.$idname.' value="'.$val.'" class="layui-input layui-input-inline">
+						<input type="file" name="file[]" data-for="'.$fname.'" lay-type="images" lay-title="上传'.$cname.'" class="layui-upload-file" multiple="multiple">
+					</div>
+					<div style="margin-left: 140px;">'.$imageTag.'</div>
+
+				</div>';
+
+		}
+
+		//日期选择器[更新:增加时间选择器]
 		elseif($field_type=='addtime'){
 			$html = '<div class="layui-form-item">
 						<label class="layui-form-label">'.$cname.'</label>
@@ -599,6 +725,7 @@ public function content_move(){
 						</div>
 					</div>';
 		}
+
 		//内容编辑器
 		elseif($field_type=='editor'){
 			$html = '<div class="layui-form-item">
@@ -620,28 +747,33 @@ public function content_move(){
 						</script>
 					</div>';
 		}
-		//省市区选择器-
+		//省市区选择器[新增:联动三级]
 		elseif($field_type=='address'){
-
+			$val=explode(" ",$val);
 			$html = '<div class="layui-form-item" '.$idname.'   >
                					 <label class=" layui-form-label">'.$cname.'</label>
                 					<div class=" layui-input-inline">
-                    					<select  id = "province"  lay-filter="province">
-                        					<option value="">请选择省</option>
+                    					<select  id = "province"  lay-filter="province" placeholder="'.$val[0].'">
+                        					<option value="">请选择</option>
                     					</select>
                 					</div>
-                					<div class="layui-input-inline" style="display: none;">
-                    					<select id = "city" lay-filter="city">
-                        					<option value="">请选择市</option>
+                					<div class="layui-input-inline" >
+                    					<select id = "city" lay-filter="city"
+                    					placeholder="'.$val[1].'">
+                        					<option value="">请选择</option>
                     					</select>
                 					</div>
-                					<div class="layui-input-inline" style="display: none;">
-                    					<select  id="area" lay-filter="area">
-                        					<option value="">请选择县/区</option>
+                					<div class="layui-input-inline" >
+                    					<select  id="area" lay-filter="area"
+                    					placeholder="'.$val[2].'">
+                        					<option value="">'.$val[2].'</option>
                    			    		</select>
                 					</div>
                 					<input type="hidden" name='.$fname.'  id="hidden_address"/>
-    				</div>';
+                					<script type="text/javascript" src="/public/admin/js/area.js"></script>
+	<script type="text/javascript" src="/public/admin/js/address.js"></script>
+    				</div>
+    				';
 		}
 		return $html;
 	}
@@ -794,8 +926,5 @@ public function content_move(){
 	}
 
 //-----------------------------------------结束分类管理--------------------------------------------
-
-
-
 }
 ?>

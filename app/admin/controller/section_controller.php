@@ -27,7 +27,10 @@ class section_controller extends comm_controller{
 		if(IS_POST) {
 			$id = F::input_int('post.id');
 			$data = F::input('post.');
+			$name = $data['name'];
+			$modle = $data['modle'];
 			unset($data['file']);
+			unset($data['modle']);
 			$data['pagesize'] = is_numeric($data['pagesize'])?$data['pagesize']:0;
 			$data['is_add'] = is_numeric($data['is_add'])?$data['is_add']:0;
 			$data['is_next'] = is_numeric($data['is_next'])?$data['is_next']:0;
@@ -61,8 +64,81 @@ class section_controller extends comm_controller{
 					$sql .= "`is_pass` tinyint(1) NOT NULL default 0,";
 					$sql .= "`is_best` tinyint(1) NOT NULL default 0,";
 					$sql .= "`add_time` int(10) NOT NULL default 0,";
+
+					if($modle){
+						// $modle = $data['modle'];
+						// 产品中心
+						if($modle == "products"){
+							$sql.="`mingzhi` varchar(50),";
+							$sql.="`jiage` decimal(12,1),";
+							$sql.="`tupian` varchar(50),";
+						}
+						//新闻咨询
+						if($modle == "news_Information"){
+							$sql.="`biaoti` varchar(50),";
+							$sql.="`neirong` varchar(65535),";
+							$sql.="`tupian` varchar(50),";
+							$sql.="`zuozhe` varchar(50),";
+						}
+						//单页面
+						if($modle == "single_page"){
+							$sql.="`biaoti` varchar(50),";
+							$sql.="`neirong` varchar(65535),";
+							$sql.="`tupian` varchar(50),";
+						}
+						//人才招聘
+						if($modle == "join_us"){
+							$sql.="`biaoti` varchar(50),";
+							$sql.="`zhizhe` varchar(65535),";
+							$sql.="`yaoqiu` varchar(50),";
+							$sql.="`dianhua` varchar(300),";
+							$sql.="`dizhi` varchar(50),";
+						}
+						//下载中心
+						if($modle == "download_center"){
+							$sql.="`biaoti` varchar(50),";
+							$sql.="`neirong` varchar(65535),";
+							$sql.="`tupian` varchar(50),";
+							$sql.="`chishu` varchar(50),";
+						}
+					}
 					$sql .= "PRIMARY KEY (`id`))";
 					$this->exec($sql);
+
+					if($modle){
+						$id=$this->db->table('section')->where('name='."'{$data['name']}'")->getval('id');
+						if($modle == "products"){
+							$sql2 ="insert into f_field(pid,name,field_name,field_type,field_long,type,is_show)values ('".$id."','名字','mingzhi','varchar','50','input',1),
+										('".$id."','价格','jiage','decimal','12,1','inputnumber',1),
+										('".$id."','图片','tupian','varchar','50','photo',1)";
+						}
+						if($modle == "news_Information"){
+							$sql2 ="insert into f_field(pid,name,field_name,field_type,field_long,type,is_show)values ('".$id."','标题','biaoti','varchar','50','input',1),
+										('".$id."','内容','neirong','varchar','65535','textarea',1),
+										('".$id."','图片','tupian','varchar','50','photo',1),
+										('".$id."','作者','zuozhe','varchar','50','input',1)";
+						}
+						if($modle == "single_page"){
+							$sql2 ="insert into f_field(pid,name,field_name,field_type,field_long,type,is_show)values ('".$id."','标题','biaoti','varchar','50','input',1),
+										('".$id."','内容','neirong','varchar','65535','textarea',1),
+										('".$id."','图片','tupian','varchar','50','photo',1)";
+						}
+						if($modle == "join_us"){
+							$sql2 ="insert into f_field(pid,name,field_name,field_type,field_long,type,is_show)values ('".$id."','标题','biaoti','varchar','50','input',1),
+										('".$id."','职责','zhizhe','varchar','50','textarea',1),
+										('".$id."','要求','yaoqiu','varchar','65535','textarea',1),
+										('".$id."','电话','dianhua','varchar','50','input',1),
+										('".$id."','地址','dizhi','varchar','50','input',1)";
+						}
+						if($modle == "download_center"){
+							$sql2 ="insert into f_field(pid,name,field_name,field_type,field_long,type,is_show)values ('".$id."','标题','biaoti','varchar','50','input',1),
+										('".$id."','内容','neirong','varchar','65535','textarea',1),
+										('".$id."','图片','tupian','varchar','50','photo',1),
+										('".$id."','下载次数','chishu','decimal','12,1','inputnumber',1)";
+						}
+						$this->exec($sql2);
+					}
+
 					F::redirect('保存成功',$this->url('section/index',['id'=>0]),1);
 				} else {
 					F::redirect('保存失败',$this->url('section'),1);

@@ -1,4 +1,4 @@
-﻿/**
+/**
  * 后台JS主入口
  */
 
@@ -57,7 +57,7 @@ layui.define(['form', 'layer', 'element', 'layedit', 'laydate', 'upload'], funct
 	 * 通用表单提交(AJAX方式)
 	 */
 	form.on('submit(*)', function (data) {
-		//return true;//如需AJAX提交，请将此行注释
+		// return true;//如需AJAX提交，请将此行注释
 		// 同名Input重
 		var _data = data.field;
 		for(var key in _data){

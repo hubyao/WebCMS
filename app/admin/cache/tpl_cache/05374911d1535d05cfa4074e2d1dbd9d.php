@@ -9,7 +9,7 @@ error_reporting(E_ALL || ~E_NOTICE);
 	<meta name="renderer" content="webkit">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="format-detection" content="telephone=no">
-	<link rel="stylesheet" href="/public/admin/layui/css/layui.css" media="all">	    
+	<link rel="stylesheet" href="/public/admin/layui/css/layui.css" media="all">
 	<link rel="stylesheet" href="/public/admin/css/font-awesome.min.css">
 	<!--JS引用-->
 	<script src="/public/admin/js/jquery.min.js"></script>
@@ -78,7 +78,6 @@ error_reporting(E_ALL || ~E_NOTICE);
 		<ul class="layui-tab-title">
 			<li><a href="<?php echo $this->url('useradmin/index');?>">管理员中心</a></li>
 			<li class="layui-this"><?php echo $edit?'修改管理员':'添加管理员'; ?></li>
-			
 		</ul>
 		<div class="layui-tab-content">
 			<div class="layui-tab-item layui-show">

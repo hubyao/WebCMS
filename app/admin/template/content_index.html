@@ -1,5 +1,6 @@
-﻿{include inc_top.html}
+{include inc_top.html}
 {include inc_left.html}
+
 <div class="layui-body">
 	<!--tab标签-->
 	<div class="layui-tab layui-tab-brief">
@@ -30,49 +31,57 @@
 					</div>
 				</form>
 				<hr>
-				<table class="layui-table">
-					<thead>
-					<tr>
-						<th class='tc' nowrap><a href="#" name="top_checkbox" data-for="ids">选择</a></th>
-						<th>分类</th>
-						{foreach $fieldTitle as $k=>$v}
-						<th>{$v}</th>
+				<div  style="width: 100%; position: absolute; bottom: 40px; top: 100px; left: 0px; overflow-x: auto; margin: 10px;"> <table class="layui-table"> <thead> <tr>
+							<th class='tc' nowrap><a href="#" name="top_checkbox" data-for="ids">选择</a></th>
+							<th>分类</th>
+							{foreach $fieldTitle as $k=>$v}
+							<th>{$v}</th>
+							{/foreach}
+							<th class='tc' nowrap>日期</th>
+							<th class='tc' nowrap>排序</th>
+							<th class='tc' nowrap>操作</th>
+						</tr>
+						</thead>
+						<tbody>
+						{foreach $pagelist as $k=>$v}
+						<tr>
+							<td align="center"><input type="checkbox" name="ids" value="{$v.id}" title="选择"></td>
+							<td>
+								<a href="{:url('content/index',['pid'=>$pid])}">{$list_section['name']}</a>
+								{foreach $v['category'] as $k1=>$v1}
+								{if $v1['fid']}
+								 ><a href="{:url('content/index',['pid'=>$pid,'fid'=>$v1['fid']])}">{$v1.name}</a>
+								{/if}
+							{/foreach}</td>
+							{foreach $fielden as $k1=>$v1}
+								<td>
+								{if strpos($v[$v1],'public')&&strpos($v[$v1],',')}
+								{foreach explode(",",explode("/", $v[$v1])[4]) as $k2 =>$v2}
+										<p>{$v2}</p> 
+								{/foreach}
+								{elseif explode("/", $v[$v1])[1] == 'public'} 
+									<center><img src="{$v[$v1]}" style="width: 200px;height: 140px;"></center>
+								{elseif explode("/", $v[$v1])[1] != 'public'} 
+									<p>{$v[$v1]}</p>
+								{/if}
+								</td>
+							{/foreach}
+							<td nowrap>{date('Y-m-d',$v['add_time'])}</td>
+							<td align="right" nowrap>
+								<a href="#" data-url="{:url('content/content_move',['action'=>'down','pid'=>$pid,'id'=>$v['id']])}" class="layui-btn layui-btn-normal layui-btn-mini ajax-link">向上</a>
+								<a href="#" data-url="{:url('content/content_move',['action'=>'up','pid'=>$pid,'id'=>$v['id']])}" class="layui-btn layui-btn-normal layui-btn-mini ajax-link">向下</a>
+							</td>
+							<td align="right" nowrap>
+								<a href="{:url('content/add',['pid'=>$pid,'id'=>$v['id']])}" class="layui-btn layui-btn-mini edit_category">查看/修改</a>
+								<a href="#" data-url="{:url('content/delete',['pid'=>$pid,'id'=>$v['id']])}" class="layui-btn layui-btn-danger layui-btn-mini ajax-delete">删除</a>
+							</td>
+						</tr>
 						{/foreach}
-						<th class='tc' nowrap>日期</th>
-						<th class='tc' nowrap>排序</th>
-						<th class='tc' nowrap>操作</th>
-					</tr>
-					</thead>
-					<tbody>
-					{foreach $pagelist as $k=>$v}
-					<tr>
-						<td align="center"><input type="checkbox" name="ids" value="{$v.id}" title="选择"></td>
-						<td>
-							<a href="{:url('content/index',['pid'=>$pid])}">{$list_section['name']}</a>
-							{foreach $v['category'] as $k1=>$v1}
-							{if $v1['fid']}
-							> <a href="{:url('content/index',['pid'=>$pid,'fid'=>$v1['fid']])}">{$v1.name}</a>
-							{/if}
-						{/foreach}</td>
-						{foreach $fielden as $k1=>$v1}
-						<td>{if explode("/", $v[$v1])[1] == 'public'} <img src="{$v[$v1]}" style="width: 200px;height: 140px;"> {else} <p>{$v[$v1]}</p> {/if}</td>
-						{/foreach}
-						<td nowrap>{date('Y-m-d',$v['add_time'])}</td>
-						<td align="right" nowrap>
-							<a href="#" data-url="{:url('content/content_move',['action'=>'down','pid'=>$pid,'id'=>$v['id']])}" class="layui-btn layui-btn-normal layui-btn-mini ajax-link">向上</a>
-							<a href="#" data-url="{:url('content/content_move',['action'=>'up','pid'=>$pid,'id'=>$v['id']])}" class="layui-btn layui-btn-normal layui-btn-mini ajax-link">向下</a>
-						</td>
-						<td align="right" nowrap>
-							<a href="{:url('content/add',['pid'=>$pid,'id'=>$v['id']])}" class="layui-btn layui-btn-mini edit_category">查看/修改</a>
-							<a href="#" data-url="{:url('content/delete',['pid'=>$pid,'id'=>$v['id']])}" class="layui-btn layui-btn-danger layui-btn-mini ajax-delete">删除</a>
-						</td>
-					</tr>
-					{/foreach}
-					</tbody>
-				</table>
+						</tbody>
+					</table>
+				</div>
 				{if $pageurl}
-				<div id="splitPage"></div>
-				<script type="text/javascript">
+				<div id="splitPage" style="position: absolute; bottom: 0; right: 100px;"></div> <script type="text/javascript">
 				layui.use(['laypage', 'layer'], function(){
 					var laypage = layui.laypage,
 						layer = layui.layer;
@@ -90,8 +99,29 @@
 				});
 				</script>
 				{/if}
-				<div class="layui-form">
-					{if $tree}
+
+
+				<div class="layui-form" style=" position: absolute; bottom: 0px;">
+				<!-- 多选择删除 -->
+				<div class="layui-inline">
+						<button class="layui-btn" id="del" data-flag="delete" data-url="{:url('content/movedata',['pid'=>$pid])}">删除<tton>
+				</div>
+				<script type="text/javascript">
+					$(function(){
+						$('body').on('click','#del',function(){
+							var ids = checked_id('ids');
+							var flag = $(this).data('flag');
+							if(ids==''){
+								layer.msg('请选择需要操作的数据');
+								return false;
+							}
+							var url = $(this).data('url');
+							url += '?flag='+flag+'&ids='+ids;
+							location.href=url;
+						});
+					});
+				</script>
+				{if $tree}
 					<div class="layui-inline">
 						<select name="category" id="new_fid">
 							<option value=""></option>
@@ -128,19 +158,20 @@
 					});
 				});
 				</script>
-			<script type="text/javascript">
-			$(document).ready(function(){
-			//限制字符个数
-				$("p").each(function(){
-   					var maxwidth=50;
-						if($(this).text().length>maxwidth){
-							$(this).text($(this).text().substring(0,maxwidth));
-							$(this).html($(this).html()+'...');
-						}
-					});
-				});
 
-</script>
+				<!-- 限制字符个数省略号 -->
+				<script type="text/javascript">
+					$(document).ready(function(){
+					//限制字符个数
+						$("p").each(function(){
+							var maxwidth=50;//限制字符个数
+							if($(this).text().length>maxwidth){
+								$(this).text($(this).text().substring(0,maxwidth));
+								$(this).html($(this).html()+'...');
+							}
+						});
+					});
+				</script>
 			</div>
 		</div>
 	</div>

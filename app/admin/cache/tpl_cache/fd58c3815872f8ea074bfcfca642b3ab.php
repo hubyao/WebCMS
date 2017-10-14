@@ -6,7 +6,7 @@
 	<meta name="renderer" content="webkit">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="format-detection" content="telephone=no">
-	<link rel="stylesheet" href="/public/admin/layui/css/layui.css" media="all">	    
+	<link rel="stylesheet" href="/public/admin/layui/css/layui.css" media="all">
 	<link rel="stylesheet" href="/public/admin/css/font-awesome.min.css">
 	<!--JS引用-->
 	<script src="/public/admin/js/jquery.min.js"></script>
@@ -69,6 +69,7 @@
 			</ul>
 		</div>
 	</div>
+
 <div class="layui-body">
 	<!--tab标签-->
 	<div class="layui-tab layui-tab-brief">
@@ -99,49 +100,57 @@
 					</div>
 				</form>
 				<hr>
-				<table class="layui-table">
-					<thead>
-					<tr>
-						<th class='tc' nowrap><a href="#" name="top_checkbox" data-for="ids">选择</a></th>
-						<th>分类</th>
-						<?php foreach($fieldTitle as $k=>$v) { ?>
-						<th><?php echo $v; ?></th>
-						<?php } ?>
-						<th class='tc' nowrap>日期</th>
-						<th class='tc' nowrap>排序</th>
-						<th class='tc' nowrap>操作</th>
-					</tr>
-					</thead>
-					<tbody>
-					<?php foreach($pagelist as $k=>$v) { ?>
-					<tr>
-						<td align="center"><input type="checkbox" name="ids" value="<?php echo $v['id']; ?>" title="选择"></td>
-						<td>
-							<a href="<?php echo $this->url('content/index',['pid'=>$pid]);?>"><?php echo $list_section['name']; ?></a>
-							<?php foreach($v['category'] as $k1=>$v1) { ?>
-							<?php if($v1['fid']) { ?>
-							> <a href="<?php echo $this->url('content/index',['pid'=>$pid,'fid'=>$v1['fid']]);?>"><?php echo $v1['name']; ?></a>
+				<div  style="width: 100%; position: absolute; bottom: 40px; top: 100px; left: 0px; overflow-x: auto; margin: 10px;"> <table class="layui-table"> <thead> <tr>
+							<th class='tc' nowrap><a href="#" name="top_checkbox" data-for="ids">选择</a></th>
+							<th>分类</th>
+							<?php foreach($fieldTitle as $k=>$v) { ?>
+							<th><?php echo $v; ?></th>
 							<?php } ?>
-						<?php } ?></td>
-						<?php foreach($fielden as $k1=>$v1) { ?>
-						<td><?php if(explode("/", $v[$v1])[1] == 'public') { ?> <img src="<?php echo $v[$v1]; ?>" style="width: 200px;height: 140px;"> <?php } else { ?> <p><?php echo $v[$v1]; ?></p> <?php } ?></td>
+							<th class='tc' nowrap>日期</th>
+							<th class='tc' nowrap>排序</th>
+							<th class='tc' nowrap>操作</th>
+						</tr>
+						</thead>
+						<tbody>
+						<?php foreach($pagelist as $k=>$v) { ?>
+						<tr>
+							<td align="center"><input type="checkbox" name="ids" value="<?php echo $v['id']; ?>" title="选择"></td>
+							<td>
+								<a href="<?php echo $this->url('content/index',['pid'=>$pid]);?>"><?php echo $list_section['name']; ?></a>
+								<?php foreach($v['category'] as $k1=>$v1) { ?>
+								<?php if($v1['fid']) { ?>
+								 ><a href="<?php echo $this->url('content/index',['pid'=>$pid,'fid'=>$v1['fid']]);?>"><?php echo $v1['name']; ?></a>
+								<?php } ?>
+							<?php } ?></td>
+							<?php foreach($fielden as $k1=>$v1) { ?>
+								<td>
+								<?php if(strpos($v[$v1],'public')&&strpos($v[$v1],',')) { ?>
+								<?php foreach(explode(",",explode("/", $v[$v1])[4]) as $k2 =>$v2) { ?>
+										<p><?php echo $v2; ?></p> 
+								<?php } ?>
+								<?php } elseif(explode("/", $v[$v1])[1] == 'public') { ?> 
+									<center><img src="<?php echo $v[$v1]; ?>" style="width: 200px;height: 140px;"></center>
+								<?php } elseif(explode("/", $v[$v1])[1] != 'public') { ?> 
+									<p><?php echo $v[$v1]; ?></p>
+								<?php } ?>
+								</td>
+							<?php } ?>
+							<td nowrap><?php echo date('Y-m-d',$v['add_time']);?></td>
+							<td align="right" nowrap>
+								<a href="#" data-url="<?php echo $this->url('content/content_move',['action'=>'down','pid'=>$pid,'id'=>$v['id']]);?>" class="layui-btn layui-btn-normal layui-btn-mini ajax-link">向上</a>
+								<a href="#" data-url="<?php echo $this->url('content/content_move',['action'=>'up','pid'=>$pid,'id'=>$v['id']]);?>" class="layui-btn layui-btn-normal layui-btn-mini ajax-link">向下</a>
+							</td>
+							<td align="right" nowrap>
+								<a href="<?php echo $this->url('content/add',['pid'=>$pid,'id'=>$v['id']]);?>" class="layui-btn layui-btn-mini edit_category">查看/修改</a>
+								<a href="#" data-url="<?php echo $this->url('content/delete',['pid'=>$pid,'id'=>$v['id']]);?>" class="layui-btn layui-btn-danger layui-btn-mini ajax-delete">删除</a>
+							</td>
+						</tr>
 						<?php } ?>
-						<td nowrap><?php echo date('Y-m-d',$v['add_time']);?></td>
-						<td align="right" nowrap>
-							<a href="#" data-url="<?php echo $this->url('content/content_move',['action'=>'down','pid'=>$pid,'id'=>$v['id']]);?>" class="layui-btn layui-btn-normal layui-btn-mini ajax-link">向上</a>
-							<a href="#" data-url="<?php echo $this->url('content/content_move',['action'=>'up','pid'=>$pid,'id'=>$v['id']]);?>" class="layui-btn layui-btn-normal layui-btn-mini ajax-link">向下</a>
-						</td>
-						<td align="right" nowrap>
-							<a href="<?php echo $this->url('content/add',['pid'=>$pid,'id'=>$v['id']]);?>" class="layui-btn layui-btn-mini edit_category">修改</a>
-							<a href="#" data-url="<?php echo $this->url('content/delete',['pid'=>$pid,'id'=>$v['id']]);?>" class="layui-btn layui-btn-danger layui-btn-mini ajax-delete">删除</a>
-						</td>
-					</tr>
-					<?php } ?>
-					</tbody>
-				</table>
+						</tbody>
+					</table>
+				</div>
 				<?php if($pageurl) { ?>
-				<div id="splitPage"></div>
-				<script type="text/javascript">
+				<div id="splitPage" style="position: absolute; bottom: 0; right: 100px;"></div> <script type="text/javascript">
 				layui.use(['laypage', 'layer'], function(){
 					var laypage = layui.laypage,
 						layer = layui.layer;
@@ -159,8 +168,29 @@
 				});
 				</script>
 				<?php } ?>
-				<div class="layui-form">
-					<?php if($tree) { ?>
+
+
+				<div class="layui-form" style=" position: absolute; bottom: 0px;">
+				<!-- 多选择删除 -->
+				<div class="layui-inline">
+						<button class="layui-btn" id="del" data-flag="delete" data-url="<?php echo $this->url('content/movedata',['pid'=>$pid]);?>">删除<tton>
+				</div>
+				<script type="text/javascript">
+					$(function(){
+						$('body').on('click','#del',function(){
+							var ids = checked_id('ids');
+							var flag = $(this).data('flag');
+							if(ids==''){
+								layer.msg('请选择需要操作的数据');
+								return false;
+							}
+							var url = $(this).data('url');
+							url += '?flag='+flag+'&ids='+ids;
+							location.href=url;
+						});
+					});
+				</script>
+				<?php if($tree) { ?>
 					<div class="layui-inline">
 						<select name="category" id="new_fid">
 							<option value=""></option>
@@ -197,19 +227,20 @@
 					});
 				});
 				</script>
-<script type="text/javascript">
-$(document).ready(function(){
-//限制字符个数
-$("p").each(function(){
-   var maxwidth=50;
-if($(this).text().length>maxwidth){
-	$(this).text($(this).text().substring(0,maxwidth));
-	$(this).html($(this).html()+'...');
-	}
-});
-});
 
-</script>
+				<!-- 限制字符个数省略号 -->
+				<script type="text/javascript">
+					$(document).ready(function(){
+					//限制字符个数
+						$("p").each(function(){
+							var maxwidth=50;//限制字符个数
+							if($(this).text().length>maxwidth){
+								$(this).text($(this).text().substring(0,maxwidth));
+								$(this).html($(this).html()+'...');
+							}
+						});
+					});
+				</script>
 			</div>
 		</div>
 	</div>

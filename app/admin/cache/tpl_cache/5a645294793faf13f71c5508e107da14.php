@@ -6,7 +6,7 @@
 	<meta name="renderer" content="webkit">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="format-detection" content="telephone=no">
-	<link rel="stylesheet" href="/public/admin/layui/css/layui.css" media="all">	    
+	<link rel="stylesheet" href="/public/admin/layui/css/layui.css" media="all">
 	<link rel="stylesheet" href="/public/admin/css/font-awesome.min.css">
 	<!--JS引用-->
 	<script src="/public/admin/js/jquery.min.js"></script>
@@ -77,7 +77,7 @@
 		</ul>
 		<div class="layui-tab-content">
 			<div class="layui-tab-item layui-show">
-			<form class="layui-form form-container" action="<?php echo $this->url('content/save');?>" method="post">
+			<form class="layui-form form-container" action="<?php echo $this->url('content/save');?>" method="post" enctype="multipart/form-data">
 				<input type="hidden" name="id" value="<?php echo $id; ?>" id="id">
 				<input type="hidden" name="pid" value="<?php echo $pid; ?>" id="pid">
 				<?php if($tree) { ?>
@@ -110,30 +110,7 @@
 			</form>
 		</div>
 	</div>
-	<script type="text/javascript">
-
-layui.use('form', function(){
-var array = [];
-var form = layui.form();
-form.on('select', function(data){
-	// console.log(data);
-	console.log(data.elem.selectedOptions["0"].id);
- 	array[data.elem.id] = data.value;
- 	if(data.elem.id == 'province'){
- 		array['city'] ='';
- 		array['area'] ='';
- 	}
- 	if(data.elem.id == 'city'){
- 		array['area'] ='';
- 	}
-  	var address = array['province']+" "+array['city']+" "+array['area'];
-  	$('#hidden_address').val(address);
- 	});
-});
-
-
-
-</script>
+</div>
 </div>
 <?php if($tree) { ?>
 <style type="text/css">
@@ -150,9 +127,6 @@ form.on('select', function(data){
 #multiple_select ul li.isSelect{ color: #DDD; cursor:not-allowed;}
 #multiple_select ul li:hover{ background: #F8F8F8;}
 </style>
-
-
-
 
 <script type="text/javascript">
 function init_mul_select(default_ids){
@@ -217,76 +191,12 @@ $(function(){
 });
 </script>
 <?php } ?>
-<script type="text/javascript" src="/public/admin/js/area.js"></script>
-    <script>
-        //初始数据
-        var areaData = Area;
-        var $form;
-        var form;
-        var $;
-        layui.use(['jquery', 'form'], function() {
-            $ = layui.jquery;
-            form = layui.form();
-            $form = $('form');
-            loadProvince();
-        });
-         //加载省数据
-        function loadProvince() {
-            var proHtml = '';
-            for (var i = 0; i < areaData.length; i++) {
-                proHtml += '<option id="' + areaData[i].provinceName + '_' + areaData[i].mallCityList.length + '_' + i + '" value="' + areaData[i].provinceName  + '">' + areaData[i].provinceName + '</option>';
-            }
-            //初始化省数据
-            $form.find('select[id=province]').append(proHtml);
-            form.render();
-            form.on('select(province)', function(data) {
-                $form.find('select[id=area]').html('<option value="">请选择县/区</option>').parent().hide();
-                var value = data.elem.selectedOptions["0"].id;
-                var d = value.split('_');
-                var code = d[0];
-                var count = d[1];
-                var index = d[2];
-                if (count > 0) {
-                    loadCity(areaData[index].mallCityList);
-                } else {
-                    $form.find('select[id=city]').parent().hide();
-                }
-            });
-        }
-         //加载市数据
-        function loadCity(citys) {
-            var cityHtml = '';
-            for (var i = 0; i < citys.length; i++) {
-                cityHtml += '<option id="' + citys[i].cityName + '_' + citys[i].mallAreaList.length + '_' + i + '"  value="' + citys[i].cityName+ '">' + citys[i].cityName + '</option>';
-            }
-            $form.find('select[id=city]').html(cityHtml).parent().show();
-            form.render();
-            form.on('select(city)', function(data) {
-                var value = data.elem.selectedOptions["0"].id;
-                var d = value.split('_');
-                var code = d[0];
-                var count = d[1];
-                var index = d[2];
-                if (count > 0) {
-                    loadArea(citys[index].mallAreaList);
-                } else {
-                    $form.find('select[id=area]').parent().hide();
-                }
-            });
-        }
-         //加载县/区数据
-        function loadArea(areas) {
-            var areaHtml = '';
-            for (var i = 0; i < areas.length; i++) {
-                areaHtml += '<option value="' + areas[i].areaName + '">' + areas[i].areaName + '</option>';
-            }
-            $form.find('select[id=area]').html(areaHtml).parent().show();
-            form.render();
-            form.on('select(area)', function(data) {
-                // console.log(data);
-            });
-        }
-    </script>
+<!-- [更新：]单图片上传 -->
+	<div class="img_resource" style="display: none;">
+		<?php foreach($pic as $k=>$v) { ?>
+			<img data-id="/<?php echo $v; ?>" src="/<?php echo $v; ?>" height="200" width="250" style="margin: 6px 3px;" />
+		<?php } ?>
+	</div>
 <?php if (!defined('BASE_PATH')) exit;?>	<!--底部-->
 	<div class="layui-footer footer">
 		<div class="layui-main">

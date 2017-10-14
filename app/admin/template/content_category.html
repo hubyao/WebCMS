@@ -7,7 +7,6 @@
 			<li class="layui-this"><a href="{:url('content/category',['pid'=>$pid])}">{$pid_item.name}分类管理</a></li>
 			<li class=""><a href="#" id="add_category">添加分类</a></li>
 		</ul>
-
 		<div class="layui-tab-content">
 			<div class="layui-tab-item layui-show">
 				{if $leveldata}
@@ -18,7 +17,6 @@
 				{/foreach}
 				</p>
 				{/if}
-
 				<table class="layui-table">
 					<thead>
 					<tr>
@@ -28,7 +26,6 @@
 						<th width="1%" style="text-align:center;">操作</th>
 					</tr>
 					</thead>
-
 					<tbody>
 					{foreach $list as $k=>$v}
 					<tr>
@@ -104,8 +101,7 @@ $(function(){
 		});
 	}).on('click','.edit_category',function(){//修改分类
 		var layer = layui.layer;
-		
-		
+
 		$('#edit_form #id').val($(this).data('id'));
 		$('#edit_form #name').val($(this).data('name'));
 		$('#edit_form #thumb').val($(this).data('thumb'));

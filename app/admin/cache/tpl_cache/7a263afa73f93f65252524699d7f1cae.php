@@ -6,7 +6,7 @@
 	<meta name="renderer" content="webkit">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="format-detection" content="telephone=no">
-	<link rel="stylesheet" href="/public/admin/layui/css/layui.css" media="all">	    
+	<link rel="stylesheet" href="/public/admin/layui/css/layui.css" media="all">
 	<link rel="stylesheet" href="/public/admin/css/font-awesome.min.css">
 	<!--JS引用-->
 	<script src="/public/admin/js/jquery.min.js"></script>
@@ -78,13 +78,28 @@
 		</ul>
 		<div class="layui-tab-content">
 			<div class="layui-tab-item layui-show">
-			<form class="layui-form form-container" action="<?php echo $this->url('section/save');?>" method="post">
+			<form class="layui-form form-container" action="<?php echo $this->url('section/save');?>" method="post" enctype="multipart/form-data">
 				<input type="hidden" name="id" value="<?php echo $id; ?>" id="id">
 				<div class="layui-form-item">
 					<label class="layui-form-label">栏目名称</label>
 					<div class="layui-input-block">
 						<input type="text" name="name" value="<?php echo $item['name']; ?>" required lay-verify="required" placeholder="请输入栏目名称" class="layui-input" id="cn_name"<?php echo $id?' readonly':''; ?>>
 						<input type="hidden" name="ename" value="<?php echo $item['ename']; ?>" id="en_name">
+					</div>
+				</div>
+
+				<div class="layui-form-item">
+					<label class="layui-form-label">一键创建模块</label>
+					<div class="layui-input-block">
+						<select name="modle"  class="layui-input-inline">
+							<option value=""> ( 选填 ) 请选择类型</option>
+							<option value="products">产品中心</option>
+							<option value="news_Information">新闻资讯</option>
+							<!-- <option value="case">工程案例</option> -->
+							<option value="single_page">单页面</option>
+							<option value="join_us">人才招聘</option>
+							<option value="download_center">下载中心</option>
+						</select>
 					</div>
 				</div>
 				<div class="layui-form-item">
@@ -129,7 +144,7 @@
 				<div class="layui-form-item">
 					<label class="layui-form-label">分页大小</label>
 					<div class="layui-input-block">
-						<input type="text" name="pagesize" value="<?php echo $item['pagesize']; ?>" class="layui-input" placeholder="（选填）请填写分页大小">
+						<input type="text" name="pagesize" value="<?php echo $item['pagesize']?$item['pagesize']:10; ?>" class="layui-input" placeholder="（选填）请填写分页大小">
 					</div>
 				</div>
 				<div class="layui-form-item">

@@ -92,6 +92,38 @@ class comm_controller extends controller{
 			return $this->db->table($tb_name)->getlist();
 		}
 	}
+
+	/*
+	返回一维数组
+	相当于get()
+	 */
+	
+	public function D3($tb_name,$tb_where='',$order){
+		if($tb_where){
+			$w_type = gettype($tb_where);
+			if($w_type=='integer'){//以ID为主键查找
+				$con1 = 'id=?';
+				$con2 = array($tb_where);
+			}
+			elseif($w_type=='string'){//自定义的搜索条件
+				$con1 = $tb_where;
+				$con2 = false;
+			}
+			elseif($w_type=='array'){//以数组为条件
+				$con1 = $tb_where[0];
+				$con2 = isset($tb_where[1]) ? $tb_where[1] : false;
+			}
+			if($con2){
+				return $this->db->table($tb_name)->where($con1,$con2)->order($order)->getlist();
+			}
+			else{
+				return $this->db->table($tb_name)->where($con1)->order($order)->getlist();
+			}
+		}
+		else{
+			return $this->db->table($tb_name)->getlist();
+		}
+	}
 	/*
 	执行SQL
 	*/
@@ -137,8 +169,7 @@ class comm_controller extends controller{
 		$r_page['url'] = $pager->url();
 		return $r_page;
 	}
-
-	public function send_mail($title,$content,$email_sender,$email_password,$email_smtp,$email_receiver){
+public function send_mail($title,$content,$email_sender,$email_password,$email_smtp,$email_receiver){
 		//连接数据库
 		$maillist=$this->db->table('email')->where('id=1')->get();
 		//后台收件人邮箱
@@ -173,6 +204,5 @@ class comm_controller extends controller{
 				F::redirect("邮箱发送成功，该邮箱可用",'/admin/system',1);
 			}
 	}
-
 }
 ?>

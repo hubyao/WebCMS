@@ -111,12 +111,13 @@
 						<input type="text" name="email" value="<?php echo $item['email']; ?>" placeholder="请输入邮箱地址" class="layui-input">
 					</div>
 				</div>
+				<!-- 新增会员等级分类 -->
 				<div class="layui-form-item">
 					<label class="layui-form-label">会员等级:</label>
 					<div class="layui-input-block">
 						<select name="user_level">
 							<?php foreach($list as $k => $v) { ?>
-							<option value="<?php echo $v['id']; ?>"><?php echo $v['name']; ?></option>
+							<option value="<?php echo $v['id']; ?>" <?php if($v['id']==$item['user_level']) { ?>selected<?php } ?>><?php echo $v['name']; ?></option>
 							<?php } ?>
 						</select>
 					</div>

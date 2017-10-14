@@ -1,0 +1,12 @@
+2017-10-13 17:16:35 | ::1 | /index.php |SQL语句错误: select name from f_school LIMIT 1语句 =>SQLSTATE[42S02]: Base table or view not found: 1146 Table 'finchs.f_school' doesn't exist
+2017-10-13 17:26:10 | ::1 | /index.php |SQL语句错误: select name from f_school LIMIT 1语句 =>SQLSTATE[42S02]: Base table or view not found: 1146 Table 'finchs.f_school' doesn't exist
+2017-10-13 17:37:10 | ::1 | /index.php/admin/content/add/pid-96-id-19.html |SQL语句错误: select * from f_section语句 =>SQLSTATE[42S02]: Base table or view not found: 1146 Table 'book.f_section' doesn't exist
+2017-10-13 17:37:18 | ::1 | /index.php |SQL语句错误: select name from f_school LIMIT 1语句 =>SQLSTATE[42S02]: Base table or view not found: 1146 Table 'book.f_school' doesn't exist
+2017-10-13 17:37:30 | ::1 | /index.php |PDO连接错误信息：SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo failed: ��֪�������������� 
+2017-10-13 17:37:32 | ::1 | /index.php |PDO连接错误信息：SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo failed: ��֪�������������� 
+2017-10-13 17:37:53 | ::1 | /index.php |SQL语句错误: select name from f_school LIMIT 1语句 =>SQLSTATE[42S02]: Base table or view not found: 1146 Table 'book.f_school' doesn't exist
+2017-10-13 17:38:50 | ::1 | /index.php/public/default/style.css |default应用里:controller\public_controller.php不存在
+2017-10-13 17:38:50 | ::1 | /index.php/public/default/js.js |default应用里:controller\public_controller.php不存在
+2017-10-13 17:38:50 | ::1 | /index.php/public/default/jquery-1.9.1.js |default应用里:controller\public_controller.php不存在
+2017-10-13 18:38:58 | ::1 | /index.php |SQL语句错误: select name from f_school LIMIT 1语句 =>SQLSTATE[42S02]: Base table or view not found: 1146 Table 'finchs.f_school' doesn't exist
+2017-10-13 19:10:36 | ::1 | /index.php/admin/content/add/pid-96-id-18.html |SQL语句错误: select id,name from  where pid=0语句 =>SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'where pid=0' at line 1

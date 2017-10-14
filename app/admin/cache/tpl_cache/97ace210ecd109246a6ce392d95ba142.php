@@ -6,7 +6,7 @@
 	<meta name="renderer" content="webkit">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="format-detection" content="telephone=no">
-	<link rel="stylesheet" href="/public/admin/layui/css/layui.css" media="all">	    
+	<link rel="stylesheet" href="/public/admin/layui/css/layui.css" media="all">
 	<link rel="stylesheet" href="/public/admin/css/font-awesome.min.css">
 	<!--JS引用-->
 	<script src="/public/admin/js/jquery.min.js"></script>
@@ -109,9 +109,8 @@
 						<i><?php echo $v['field_name']; ?></i>
 						<em data-url="<?php echo $this->url('section/field_del',['pid'=>$pid,'id'=>$v['id']]);?>" class="ajax-delete" title="确定要删除字段<?php echo $v['name']; ?>？">×</em>
 						<form class="layui-form" action="<?php echo $this->url('section/field_move',['pid'=>$pid,'id'=>$v['id']]);?>" method="post">
-							<a href="javascript:;"  title="向下移动" lay-submit lay-filter="*">∨</a>
+							<a href="<?php echo $this->url('section/field_move',['pid'=>$pid,'id'=>$v['id']]);?>"  title="向下移动" lay-submit lay-filter="*">∨</a>
 						</form>
-						
 					</li>
 					<?php } ?>
 					<li data-id="0" class="add"><i class="layui-icon">&#xe61f;</i> 增加新字段</li>
@@ -164,8 +163,10 @@
 								<option value="select"<?php if($item['type']=='select') { ?> selected<?php } ?>>下拉列表</option>
 								<option value="upload"<?php if($item['type']=='upload') { ?> selected<?php } ?>>文件上传</option>
 								<option value="photo"<?php if($item['type']=='photo') { ?> selected<?php } ?>>图片上传</option>
+								<option value="photos"<?php if($item['type']=='photos') { ?> selected<?php } ?>>多图片上传</option>
 								<option value="addtime"<?php if($item['type']=='addtime') { ?> selected<?php } ?>>日期格式</option>
 								<option value="editor"<?php if($item['type']=='editor') { ?> selected<?php } ?>>内容编辑器</option>
+								<option value="address"<?php if($item['type']=='address') { ?> selected<?php } ?>>地区选择器</option>
 							</select>
 						</div>
 					</div>

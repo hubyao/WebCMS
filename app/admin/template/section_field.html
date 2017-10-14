@@ -40,9 +40,8 @@
 						<i>{$v.field_name}</i>
 						<em data-url="{:url('section/field_del',['pid'=>$pid,'id'=>$v['id']])}" class="ajax-delete" title="确定要删除字段{$v.name}？">×</em>
 						<form class="layui-form" action="{:url('section/field_move',['pid'=>$pid,'id'=>$v['id']])}" method="post">
-							<a href="javascript:;"  title="向下移动" lay-submit lay-filter="*">∨</a>
+							<a href="{:url('section/field_move',['pid'=>$pid,'id'=>$v['id']])}"  title="向下移动" lay-submit lay-filter="*">∨</a>
 						</form>
-						
 					</li>
 					{/foreach}
 					<li data-id="0" class="add"><i class="layui-icon">&#xe61f;</i> 增加新字段</li>
@@ -95,9 +94,10 @@
 								<option value="select"{if $item['type']=='select'} selected{/if}>下拉列表</option>
 								<option value="upload"{if $item['type']=='upload'} selected{/if}>文件上传</option>
 								<option value="photo"{if $item['type']=='photo'} selected{/if}>图片上传</option>
+								<option value="photos"{if $item['type']=='photos'} selected{/if}>多图片上传</option>
 								<option value="addtime"{if $item['type']=='addtime'} selected{/if}>日期格式</option>
 								<option value="editor"{if $item['type']=='editor'} selected{/if}>内容编辑器</option>
-								<option value="address"{if $item['type']=='address'} selected{/if}>省三级联动</option>
+								<option value="address"{if $item['type']=='address'} selected{/if}>地区选择器</option>
 							</select>
 						</div>
 					</div>

@@ -100,16 +100,12 @@ $(function () {
 
                         click: function(e) {
                         		 location.href = e.point.url;
-
-
                         }
 
                 },
 
             }
         },
-
-
         series: [{
             type: 'pie',
             name: '概况',
