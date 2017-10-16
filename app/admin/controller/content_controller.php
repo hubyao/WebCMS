@@ -495,7 +495,7 @@ class content_controller extends comm_controller{
 	 * 删除图片[新增:多图上传删除方法]
 	 */
 	public function img_del(){
-		$id=F::input('get.id ');//标记数据
+		$id=F::input('get.id');//标记数据
 		$fname=F::input('get.fname');//动态获取列名
 		$img_id=F::input('get.image_id');//获取删除的图片路径
 		$prefix=F::input('get.prefix');//图片前缀路径
@@ -715,6 +715,7 @@ class content_controller extends comm_controller{
 				</div>';
 
 		}
+
 
 		//日期选择器[更新:增加时间选择器]
 		elseif($field_type=='addtime'){
