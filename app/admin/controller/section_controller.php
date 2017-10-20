@@ -51,7 +51,7 @@ class section_controller extends comm_controller{
 				F::redirect('修改成功',$this->url('section/index',['id'=>$id]),1);
 			}
 			else{
-				// 添加数据
+				// 添加数据[更新:栏目名进行排重]
 				if($this->db->table('section')->where('name='."'{$data['name']}'")->getlist()){
 					F::redirect('栏目名已存在,请重新输入','',1);
 				}
@@ -64,7 +64,7 @@ class section_controller extends comm_controller{
 					$sql .= "`is_pass` tinyint(1) NOT NULL default 0,";
 					$sql .= "`is_best` tinyint(1) NOT NULL default 0,";
 					$sql .= "`add_time` int(10) NOT NULL default 0,";
-
+					// [增加:一键创建功能]
 					if($modle){
 						// $modle = $data['modle'];
 						// 产品中心
@@ -186,7 +186,6 @@ class section_controller extends comm_controller{
 		$this->view['sec_item']=$sec_item;
 		$this->view('section_field.html');
 	}
-
 	/*
 	保存字段
 	*/
@@ -196,6 +195,11 @@ class section_controller extends comm_controller{
 			if($this->db->table('field')->where('pid='.$data['pid'].' and '.'name='."'{$data['name']}'"." and "."id!=".$data['id'])->getlist()){
 				F::redirect('该字段已存在','',1);
 			}
+
+			if($data['name']=='选择'||$data['name']=='分类'||$data['name']=='日期'||$data['name']=='排序'||$data['name']=='操作'){
+				F::redirect('该字段与已存在的名称产生冲突','',1);
+			}
+
 			$data['field_long'] = ($data['field_long'])?$data['field_long']:0;
 			$data['is_must'] = is_numeric($data['is_must'])?$data['is_must']:0;
 			$data['is_show'] = is_numeric($data['is_show'])?$data['is_show']:0;

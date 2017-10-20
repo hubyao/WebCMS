@@ -33,9 +33,11 @@
 				<hr>
 				<div  style="width: 100%; position: absolute; bottom: 40px; top: 100px; left: 0px; overflow-x: auto; margin: 10px;"> <table class="layui-table"> <thead> <tr>
 							<th class='tc' nowrap><a href="#" name="top_checkbox" data-for="ids">选择</a></th>
-							<th>分类</th>
+							<th style="white-space:nowrap;min-width: 200px;
+">分类</th>
 							{foreach $fieldTitle as $k=>$v}
-							<th>{$v}</th>
+							<th style="white-space:nowrap;min-width: 200px;
+">{$v}</th>
 							{/foreach}
 							<th class='tc' nowrap>日期</th>
 							<th class='tc' nowrap>排序</th>
@@ -46,26 +48,43 @@
 						{foreach $pagelist as $k=>$v}
 						<tr>
 							<td align="center"><input type="checkbox" name="ids" value="{$v.id}" title="选择"></td>
-							<td>
+							<td >
 								<a href="{:url('content/index',['pid'=>$pid])}">{$list_section['name']}</a>
 								{foreach $v['category'] as $k1=>$v1}
 								{if $v1['fid']}
 								 ><a href="{:url('content/index',['pid'=>$pid,'fid'=>$v1['fid']])}">{$v1.name}</a>
 								{/if}
 							{/foreach}</td>
+
+
 							{foreach $fielden as $k1=>$v1}
 								<td>
 								{if strpos($v[$v1],'public')&&strpos($v[$v1],',')}
-								{foreach explode(",",explode("/", $v[$v1])[4]) as $k2 =>$v2}
-										<p>{$v2}</p> 
-								{/foreach}
-								{elseif explode("/", $v[$v1])[1] == 'public'} 
-									<center><img src="{$v[$v1]}" style="width: 200px;height: 140px;"></center>
-								{elseif explode("/", $v[$v1])[1] != 'public'} 
+								<!-- 轮播显示多图-->
+								<script src="/public/admin/js/carousel-images.js"></script>
+								<link rel="stylesheet" type="text/css" href="/public/admin/css/carousel-images.css">
+								<div class="slider">
+ 									<ul class="slider-main">
+										{foreach explode(",", $v[$v1]) as $k2 =>$v2}
+											<li class="slider-panel"><img src="{$v2}" onerror="this.src='/public/admin/images/preview_two404.jpg'" alt="{$v[$v1]}"></li>
+										{/foreach}
+									</ul>
+	  								<div class="slider-page">
+	                       				<a class="slider-pre" href="javascript:;;"><</a>
+	                       				<a class="slider-next" href="javascript:;;">></a>
+					 				</div>
+  								</div>
+								{elseif explode("/", $v[$v1])[1] == 'public'}
+									<center>
+										<img src="{$v[$v1]}" onerror="this.src='/public/admin/images/preview_two404.jpg'" alt="{$v[$v1]}" style="width: 200px;height: 140px;word-wrap: break-word;">
+									</center>
+								{elseif explode("/", $v[$v1])[1] != 'public'}
 									<p>{$v[$v1]}</p>
 								{/if}
 								</td>
 							{/foreach}
+
+
 							<td nowrap>{date('Y-m-d',$v['add_time'])}</td>
 							<td align="right" nowrap>
 								<a href="#" data-url="{:url('content/content_move',['action'=>'down','pid'=>$pid,'id'=>$v['id']])}" class="layui-btn layui-btn-normal layui-btn-mini ajax-link">向上</a>

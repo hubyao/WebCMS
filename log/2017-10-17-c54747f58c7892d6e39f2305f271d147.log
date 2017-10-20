@@ -1,0 +1,8 @@
+2017-10-17 10:01:57 | ::1 | /index.php |SQL语句错误: select * from f_boke WHERE title={$where}语句 =>SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '}' at line 1
+2017-10-17 10:04:50 | ::1 | /index.php |SQL语句错误: select * from f_boke WHERE title=".$where."语句 =>SQLSTATE[42S22]: Column not found: 1054 Unknown column '.$where.' in 'where clause'
+2017-10-17 10:05:02 | ::1 | /index.php |SQL语句错误: select * from f_boke WHERE title=".{$where}."语句 =>SQLSTATE[42S22]: Column not found: 1054 Unknown column '.{$where}.' in 'where clause'
+2017-10-17 10:08:38 | ::1 | /index.php |SQL语句错误: select * from f_boke WHERE title="$where"语句 =>SQLSTATE[42S22]: Column not found: 1054 Unknown column '$where' in 'where clause'
+2017-10-17 10:08:45 | ::1 | /index.php |SQL语句错误: select * from f_boke WHERE title=".$where."语句 =>SQLSTATE[42S22]: Column not found: 1054 Unknown column '.$where.' in 'where clause'
+2017-10-17 10:08:55 | ::1 | /index.php |SQL语句错误: select * from f_boke WHERE title=".{$where}."语句 =>SQLSTATE[42S22]: Column not found: 1054 Unknown column '.{$where}.' in 'where clause'
+2017-10-17 10:16:16 | ::1 | /index.php |SQL语句错误: select * from f_ WHERE 地址语句 =>SQLSTATE[42S02]: Base table or view not found: 1146 Table 'finchs.f_' doesn't exist
+2017-10-17 10:17:25 | ::1 | /index.php |SQL语句错误: select * from f_field WHERE name="地址"语句 =>SQLSTATE[42S22]: Column not found: 1054 Unknown column '地址' in 'where clause'

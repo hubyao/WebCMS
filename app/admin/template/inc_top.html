@@ -31,6 +31,30 @@
 			<a href="/" target="_blank"><i class="fa fa-home"></i> 网站首页</a>
 			<a href="/{APP_NAME}"><i class="fa fa-paper-plane"></i> 后台概览</a>
 			<a href="#" data-url="{:url('system/clear')}" class="ajax-link"><i class="fa fa-trash-o"></i> 清除缓存</a>
+			<!-- <a href="#" id="help" class="ajax-link"><i class="fa fa-trash-o"></i>帮助</a> -->
 			<a href="#" data-url="{:url('login/logout')}" class="ajax-link" data-confirm='确实要退出系统？'><i class="fa fa-power-off"></i> 退出</a>
 		</div>
 	</div>
+
+<!-- <style type="text/css">
+
+</style>
+<script src="/public/admin/js/carousel-help.js"></script>
+<div id="addcate" class="hid_form" style="display: none;">
+
+</div> -->
+
+<!-- <script type="text/javascript">
+$(function(){
+	$('body').on('click','#help',function(){//批量增加分类
+		var layer = layui.layer;
+		layer.open({
+			type:1,
+			title:'帮助',
+			resize:false,
+			area:['66%','450px'],
+			content:$('#addcate')
+		});
+	})
+});
+</script> -->

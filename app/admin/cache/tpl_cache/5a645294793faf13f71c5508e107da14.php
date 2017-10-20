@@ -31,9 +31,33 @@
 			<a href="/" target="_blank"><i class="fa fa-home"></i> 网站首页</a>
 			<a href="/<?php echo APP_NAME;?>"><i class="fa fa-paper-plane"></i> 后台概览</a>
 			<a href="#" data-url="<?php echo $this->url('system/clear');?>" class="ajax-link"><i class="fa fa-trash-o"></i> 清除缓存</a>
+			<!-- <a href="#" id="help" class="ajax-link"><i class="fa fa-trash-o"></i>帮助</a> -->
 			<a href="#" data-url="<?php echo $this->url('login/logout');?>" class="ajax-link" data-confirm='确实要退出系统？'><i class="fa fa-power-off"></i> 退出</a>
 		</div>
 	</div>
+
+<!-- <style type="text/css">
+
+</style>
+<script src="/public/admin/js/carousel-help.js"></script>
+<div id="addcate" class="hid_form" style="display: none;">
+
+</div> -->
+
+<!-- <script type="text/javascript">
+$(function(){
+	$('body').on('click','#help',function(){//批量增加分类
+		var layer = layui.layer;
+		layer.open({
+			type:1,
+			title:'帮助',
+			resize:false,
+			area:['66%','450px'],
+			content:$('#addcate')
+		});
+	})
+});
+</script> -->
 <?php if (!defined('BASE_PATH')) exit;?>	<!--侧边栏-->
 	<div class="layui-side layui-bg-black">
 		<div class="layui-side-scroll">
@@ -103,7 +127,7 @@
 				<?php } ?>
 				<div class="layui-form-item">
 					<div class="layui-input-block">
-						<button class="layui-btn" lay-submit lay-filter="*">保存</button>
+						<button id="save-btn" data-name="" class="layui-btn " lay-submit lay-filter="*">保存</button>
 						<button type="reset" class="layui-btn layui-btn-primary">重置</button>
 					</div>
 				</div>
@@ -112,6 +136,12 @@
 	</div>
 </div>
 </div>
+<script type="text/javascript">
+	$("")
+	$("#save").on("click",function(){
+
+	});
+</script>
 <?php if($tree) { ?>
 <style type="text/css">
 #multiple_select{ position: relative; z-index: 9999;}
@@ -190,11 +220,26 @@ $(function(){
 	init_mul_select('<?php echo $item['fid']; ?>');
 });
 </script>
+
 <?php } ?>
 <!-- [更新：]单图片上传 -->
-	<div class="img_resource" style="display: none;">
+	<div class="img_resource" style="display: none;position: absolute;">
 		<?php foreach($pic as $k=>$v) { ?>
-			<img data-id="/<?php echo $v; ?>" src="/<?php echo $v; ?>" height="200" width="250" style="margin: 6px 3px;" />
+			<div style="width: 25%;float: left; " class="clearfix">
+				<img data-id="/<?php echo $v; ?>" src="/<?php echo $v; ?>" height="200" width="250" style="margin: 6px 3px;" />
+			</div>
+		<?php } ?>
+	</div>
+
+		<!-- [更新：]多图片上传 -->
+	<div class="imgduotu_resource" style="display: none;position: absolute;">
+		<?php foreach($pic as $k=>$v) { ?>
+			<div style="width: 25%;float: left; " class="clearfix">
+			<img data-id="/<?php echo $v; ?>" src="/<?php echo $v; ?>" height="200" width="100%" style="margin: 6px 3px;" />
+			<div style="float:left;z-index: 200;margin-top: -205px;margin-left: 225px; position:absolute;"  class="clearfix">
+				<input type="checkbox"  name="image-checkbox" value="/<?php echo $v; ?>" style="width: 30px;height: 30px;" />
+			</div>
+			</div>
 		<?php } ?>
 	</div>
 <?php if (!defined('BASE_PATH')) exit;?>	<!--底部-->

@@ -38,7 +38,7 @@ class user_controller extends comm_controller{
 		$id 	= $data['id'];
 		unset($data['id']);
 
-		//修改用户
+		//修改用户[更新:对修改与添加用户进行了信息排重验证]
 		if($id>0){
 			if($data['password']){
 				$data['password'] = md5($data['password'].C::get('salt'));
@@ -63,7 +63,7 @@ class user_controller extends comm_controller{
 			$this->db->table('user')->where('id='.$id)->update($data);
 			F::redirect('修改成功',$this->url('user/index'),1);
  		}
- 		//添加用户
+ 		//添加用户[更新]
  		else{
 			if(!$data['password']){
 				F::redirect('请输入登陆密码','',1);
@@ -80,11 +80,11 @@ class user_controller extends comm_controller{
 			$data['last_login_time'] = time();
 			$data['last_login_ip'] = F::get_client_ip();
 
-			//验证手机号格式
+			//验证手机号格式[更新]
 			if (strlen($data['mobile']) != "11"&&!preg_match_all("/13[123569]{1}\d{8}|15[1235689]\d{8}|188\d{8}/", $data['mobile'])) {
 				F::redirect('请输入正确的电话号码','',1);
 			}
-			//验证格式是否正确
+			//验证格式是否正确[更新]
 			$email_address = $data['email'];
     		$pattern = "/^([0-9A-Za-z\\-_\\.]+)@([0-9a-z]+\\.[a-z]{2,3}(\\.[a-z]{2})?)$/i";
     		if (!preg_match( $pattern, $email_address)){
@@ -100,7 +100,7 @@ class user_controller extends comm_controller{
 		}
 	}
 	/**
-	 * 会员积分列表
+	 * 会员积分列表[更新:显示积分信息]
 	 * @return [type] [description]
 	 */
 	public function goldlist(){
@@ -161,7 +161,7 @@ class user_controller extends comm_controller{
 
 
 	/**
-	 * 会员等级管理
+	 * 会员等级管理[增加:会员管理等级]
 	 * [user_level description]
 	 * @return [type] [description]
 	 */

@@ -9,7 +9,7 @@ class system_controller extends comm_controller{
 		$this->view['site_config']=$data;
 		$this->view('system.html');
 	}
-
+	//[更新:邮件发送功能]
 	public function systemHandle(){
 		if(IS_POST){
 			$data = F::input('post');

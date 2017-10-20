@@ -24,7 +24,7 @@ class useradmin_controller extends comm_controller{
 		}
 		$this->view('useradmin_add.html');
 	}
-
+	//保存修改与添加信息[更新:增加管理员名称排重]
 	public function save(){
 		$data = F::input('post.');
 		$data['user_power'] = is_array($data['user_power'])?implode(',',$data['user_power']):$data['user_power'];

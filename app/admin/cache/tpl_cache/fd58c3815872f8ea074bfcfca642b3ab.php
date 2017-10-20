@@ -31,9 +31,33 @@
 			<a href="/" target="_blank"><i class="fa fa-home"></i> 网站首页</a>
 			<a href="/<?php echo APP_NAME;?>"><i class="fa fa-paper-plane"></i> 后台概览</a>
 			<a href="#" data-url="<?php echo $this->url('system/clear');?>" class="ajax-link"><i class="fa fa-trash-o"></i> 清除缓存</a>
+			<!-- <a href="#" id="help" class="ajax-link"><i class="fa fa-trash-o"></i>帮助</a> -->
 			<a href="#" data-url="<?php echo $this->url('login/logout');?>" class="ajax-link" data-confirm='确实要退出系统？'><i class="fa fa-power-off"></i> 退出</a>
 		</div>
 	</div>
+
+<!-- <style type="text/css">
+
+</style>
+<script src="/public/admin/js/carousel-help.js"></script>
+<div id="addcate" class="hid_form" style="display: none;">
+
+</div> -->
+
+<!-- <script type="text/javascript">
+$(function(){
+	$('body').on('click','#help',function(){//批量增加分类
+		var layer = layui.layer;
+		layer.open({
+			type:1,
+			title:'帮助',
+			resize:false,
+			area:['66%','450px'],
+			content:$('#addcate')
+		});
+	})
+});
+</script> -->
 <?php if (!defined('BASE_PATH')) exit;?>	<!--侧边栏-->
 	<div class="layui-side layui-bg-black">
 		<div class="layui-side-scroll">
@@ -102,9 +126,11 @@
 				<hr>
 				<div  style="width: 100%; position: absolute; bottom: 40px; top: 100px; left: 0px; overflow-x: auto; margin: 10px;"> <table class="layui-table"> <thead> <tr>
 							<th class='tc' nowrap><a href="#" name="top_checkbox" data-for="ids">选择</a></th>
-							<th>分类</th>
+							<th style="white-space:nowrap;min-width: 200px;
+">分类</th>
 							<?php foreach($fieldTitle as $k=>$v) { ?>
-							<th><?php echo $v; ?></th>
+							<th style="white-space:nowrap;min-width: 200px;
+"><?php echo $v; ?></th>
 							<?php } ?>
 							<th class='tc' nowrap>日期</th>
 							<th class='tc' nowrap>排序</th>
@@ -115,26 +141,43 @@
 						<?php foreach($pagelist as $k=>$v) { ?>
 						<tr>
 							<td align="center"><input type="checkbox" name="ids" value="<?php echo $v['id']; ?>" title="选择"></td>
-							<td>
+							<td >
 								<a href="<?php echo $this->url('content/index',['pid'=>$pid]);?>"><?php echo $list_section['name']; ?></a>
 								<?php foreach($v['category'] as $k1=>$v1) { ?>
 								<?php if($v1['fid']) { ?>
 								 ><a href="<?php echo $this->url('content/index',['pid'=>$pid,'fid'=>$v1['fid']]);?>"><?php echo $v1['name']; ?></a>
 								<?php } ?>
 							<?php } ?></td>
+
+
 							<?php foreach($fielden as $k1=>$v1) { ?>
 								<td>
 								<?php if(strpos($v[$v1],'public')&&strpos($v[$v1],',')) { ?>
-								<?php foreach(explode(",",explode("/", $v[$v1])[4]) as $k2 =>$v2) { ?>
-										<p><?php echo $v2; ?></p> 
-								<?php } ?>
-								<?php } elseif(explode("/", $v[$v1])[1] == 'public') { ?> 
-									<center><img src="<?php echo $v[$v1]; ?>" style="width: 200px;height: 140px;"></center>
-								<?php } elseif(explode("/", $v[$v1])[1] != 'public') { ?> 
+								<!-- 轮播显示多图-->
+								<script src="/public/admin/js/carousel-images.js"></script>
+								<link rel="stylesheet" type="text/css" href="/public/admin/css/carousel-images.css">
+								<div class="slider">
+ 									<ul class="slider-main">
+										<?php foreach(explode(",", $v[$v1]) as $k2 =>$v2) { ?>
+											<li class="slider-panel"><img src="<?php echo $v2; ?>" onerror="this.src='/public/admin/images/preview_two404.jpg'" alt="<?php echo $v[$v1]; ?>"></li>
+										<?php } ?>
+									</ul>
+	  								<div class="slider-page">
+	                       				<a class="slider-pre" href="javascript:;;"><</a>
+	                       				<a class="slider-next" href="javascript:;;">></a>
+					 				</div>
+  								</div>
+								<?php } elseif(explode("/", $v[$v1])[1] == 'public') { ?>
+									<center>
+										<img src="<?php echo $v[$v1]; ?>" onerror="this.src='/public/admin/images/preview_two404.jpg'" alt="<?php echo $v[$v1]; ?>" style="width: 200px;height: 140px;word-wrap: break-word;">
+									</center>
+								<?php } elseif(explode("/", $v[$v1])[1] != 'public') { ?>
 									<p><?php echo $v[$v1]; ?></p>
 								<?php } ?>
 								</td>
 							<?php } ?>
+
+
 							<td nowrap><?php echo date('Y-m-d',$v['add_time']);?></td>
 							<td align="right" nowrap>
 								<a href="#" data-url="<?php echo $this->url('content/content_move',['action'=>'down','pid'=>$pid,'id'=>$v['id']]);?>" class="layui-btn layui-btn-normal layui-btn-mini ajax-link">向上</a>
