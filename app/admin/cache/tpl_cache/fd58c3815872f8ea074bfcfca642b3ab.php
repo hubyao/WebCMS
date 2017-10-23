@@ -106,9 +106,9 @@ $(function(){
 					<?php if($tree) { ?>
 					<div class="layui-inline">
 						<select name="fid" id="fid">
-							<option value=""></option>
+							<option value="all">全部</option>
 							<?php foreach($tree as $k=>$v) { ?>
-							<option value="<?php echo $v['id']; ?>"><?php echo $v['html']; ?> <?php echo $v['name']; ?></option>
+							<option <?php if($_GET['fid']==$v['id']) { ?>selected<?php } ?> value="<?php echo $v['id']; ?>"><?php echo $v['html']; ?> <?php echo $v['name']; ?></option>
 							<?php } ?>
 						</select>
 					</div>
@@ -118,6 +118,9 @@ $(function(){
 					</div>
 					<div class="layui-inline">
 						<button class="layui-btn">搜索</button>
+					</div>
+					<div class="layui-inline">
+						<p>共 <em style="color:red"><?php echo $pagelist_size; ?></em> 条数据</p>
 					</div>
 					<div class="rightBtn">
 						<a href="<?php echo $this->url('content/add',['pid'=>$pid]);?>" class="layui-btn layui-btn-small layui-btn-normal ajax-link layui-btn" lay-submit lay-filter="*">添加新内容</a>
@@ -154,19 +157,11 @@ $(function(){
 								<td>
 								<?php if(strpos($v[$v1],'public')&&strpos($v[$v1],',')) { ?>
 								<!-- 轮播显示多图-->
-								<script src="/public/admin/js/carousel-images.js"></script>
-								<link rel="stylesheet" type="text/css" href="/public/admin/css/carousel-images.css">
-								<div class="slider">
- 									<ul class="slider-main">
-										<?php foreach(explode(",", $v[$v1]) as $k2 =>$v2) { ?>
-											<li class="slider-panel"><img src="<?php echo $v2; ?>" onerror="this.src='/public/admin/images/preview_two404.jpg'" alt="<?php echo $v[$v1]; ?>"></li>
-										<?php } ?>
-									</ul>
-	  								<div class="slider-page">
-	                       				<a class="slider-pre" href="javascript:;;"><</a>
-	                       				<a class="slider-next" href="javascript:;;">></a>
-					 				</div>
-  								</div>
+								<?php foreach(explode(",", $v[$v1]) as $k2 =>$v2) { ?>
+										<img id="<?php echo $v2; ?>"style="display:none;width: 300px;height: 200px; position: absolute; z-index:100" src="<?php echo $v2; ?>"></img>
+										<a href="javascript:;"><p onmouseover="javascript:document.getElementById('<?php echo $v2; ?>').style.display='block';"onmouseout="javascript:document.getElementById('<?php echo $v2; ?>').style.display='none';"
+										><?php echo $v2; ?></p></a>
+								<?php } ?>
 								<?php } elseif(explode("/", $v[$v1])[1] == 'public') { ?>
 									<center>
 										<img src="<?php echo $v[$v1]; ?>" onerror="this.src='/public/admin/images/preview_two404.jpg'" alt="<?php echo $v[$v1]; ?>" style="width: 200px;height: 140px;word-wrap: break-word;">
@@ -216,7 +211,8 @@ $(function(){
 				<div class="layui-form" style=" position: absolute; bottom: 0px;">
 				<!-- 多选择删除 -->
 				<div class="layui-inline">
-						<button class="layui-btn" id="del" data-flag="delete" data-url="<?php echo $this->url('content/movedata',['pid'=>$pid]);?>">删除<tton>
+						<button class="layui-btn "  lay-submit lay-filter="*" id="del" data-flag="delete" data-url="<?php echo $this->url('content/movedata',['pid'=>$pid]);?>" >删除</button>
+
 				</div>
 				<script type="text/javascript">
 					$(function(){

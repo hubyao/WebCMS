@@ -204,6 +204,7 @@ class content_controller extends comm_controller{
 		}
 		$this->view['tree'] = $tree;
 		$this->view['pagelist'] = $list;//内容列表
+		$this->view['pagelist_size'] = sizeof($list);
 		$this->view['list_section'] = $list_section;
 		$this->view['fieldTitle'] = $fieldTitle;//中文字段名称
 		$this->view['fielden'] = $fielden;//英文字段名称
@@ -242,7 +243,7 @@ class content_controller extends comm_controller{
 		}
 		$result=$this->exec($sql);
 		if($result){
-			F::redirect($str,$this->url('content/index',['pid'=>$pid,'fid'=>$newfid]),1);
+			F::alert($str,$this->url('content/index',['pid'=>$pid,'fid'=>$newfid]));
 		}
 		$url = $this->url('content/index',['pid'=>$pid,'fid'=>$newfid]);
 		F::go($url);
@@ -312,7 +313,7 @@ class content_controller extends comm_controller{
 		//构建表单
 		$field_arr = $this->db->table('field')->where('pid='.$pid)->order('sort')->getlist();
 		if(!$field_arr){
-			F::redirect('请先配置模块的表单元素。','',4);
+			F::alert('请先配置模块的表单元素。');
 		}
 		if($id>0){
 			//查找表名
@@ -433,7 +434,7 @@ class content_controller extends comm_controller{
 			if($max>1){
 				$thisSort = $this->val($db_arr['ename'],'sort','id='.$id);
 				if($action=='up' && $thisSort==1){
-					$str = '已经移到第一位';
+					$str = '已经移到最后位';
 				}
 				elseif($action=='up' && $thisSort>1){//可以向上移动
 					$preid = $this->val($db_arr['ename'],'id','pid='.$pid.' and sort='.($thisSort-1));
@@ -456,7 +457,7 @@ class content_controller extends comm_controller{
 					$str = '操作成功';
 				}
 				elseif($action=='down' && $thisSort==$max){//可以向下移动
-					$str = '已经移到最后位';
+					$str = '已经移到第一位';
 				}
 			}
 			else{

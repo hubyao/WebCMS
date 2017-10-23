@@ -13,9 +13,9 @@
 					{if $tree}
 					<div class="layui-inline">
 						<select name="fid" id="fid">
-							<option value=""></option>
+							<option value="all">全部</option>
 							{foreach $tree as $k=>$v}
-							<option value="{$v.id}">{$v.html} {$v.name}</option>
+							<option {if $_GET['fid']==$v['id']}selected{/if} value="{$v.id}">{$v.html} {$v.name}</option>
 							{/foreach}
 						</select>
 					</div>
@@ -25,6 +25,9 @@
 					</div>
 					<div class="layui-inline">
 						<button class="layui-btn">搜索</button>
+					</div>
+					<div class="layui-inline">
+						<p>共 <em style="color:red">{$pagelist_size}</em> 条数据</p>
 					</div>
 					<div class="rightBtn">
 						<a href="{:url('content/add',['pid'=>$pid])}" class="layui-btn layui-btn-small layui-btn-normal ajax-link layui-btn" lay-submit lay-filter="*">添加新内容</a>
@@ -61,19 +64,11 @@
 								<td>
 								{if strpos($v[$v1],'public')&&strpos($v[$v1],',')}
 								<!-- 轮播显示多图-->
-								<script src="/public/admin/js/carousel-images.js"></script>
-								<link rel="stylesheet" type="text/css" href="/public/admin/css/carousel-images.css">
-								<div class="slider">
- 									<ul class="slider-main">
-										{foreach explode(",", $v[$v1]) as $k2 =>$v2}
-											<li class="slider-panel"><img src="{$v2}" onerror="this.src='/public/admin/images/preview_two404.jpg'" alt="{$v[$v1]}"></li>
-										{/foreach}
-									</ul>
-	  								<div class="slider-page">
-	                       				<a class="slider-pre" href="javascript:;;"><</a>
-	                       				<a class="slider-next" href="javascript:;;">></a>
-					 				</div>
-  								</div>
+								{foreach explode(",", $v[$v1]) as $k2 =>$v2}
+										<img id="{$v2}"style="display:none;width: 300px;height: 200px; position: absolute; z-index:100" src="{$v2}"></img>
+										<a href="javascript:;"><p onmouseover="javascript:document.getElementById('{$v2}').style.display='block';"onmouseout="javascript:document.getElementById('{$v2}').style.display='none';"
+										>{$v2}</p></a>
+								{/foreach}
 								{elseif explode("/", $v[$v1])[1] == 'public'}
 									<center>
 										<img src="{$v[$v1]}" onerror="this.src='/public/admin/images/preview_two404.jpg'" alt="{$v[$v1]}" style="width: 200px;height: 140px;word-wrap: break-word;">
@@ -123,7 +118,8 @@
 				<div class="layui-form" style=" position: absolute; bottom: 0px;">
 				<!-- 多选择删除 -->
 				<div class="layui-inline">
-						<button class="layui-btn" id="del" data-flag="delete" data-url="{:url('content/movedata',['pid'=>$pid])}">删除<tton>
+						<button class="layui-btn "  lay-submit lay-filter="*" id="del" data-flag="delete" data-url="{:url('content/movedata',['pid'=>$pid])}" >删除</button>
+
 				</div>
 				<script type="text/javascript">
 					$(function(){
