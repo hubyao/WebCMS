@@ -158,8 +158,24 @@ $(function(){
 								<?php if(strpos($v[$v1],'public')&&strpos($v[$v1],',')) { ?>
 								<!-- 轮播显示多图-->
 								<?php foreach(explode(",", $v[$v1]) as $k2 =>$v2) { ?>
-										<img id="<?php echo $v2; ?>"style="display:none;width: 300px;height: 200px; position: absolute; z-index:100" src="<?php echo $v2; ?>"></img>
-										<a href="javascript:;"><p onmouseover="javascript:document.getElementById('<?php echo $v2; ?>').style.display='block';"onmouseout="javascript:document.getElementById('<?php echo $v2; ?>').style.display='none';"
+										<img id="<?php echo $v2; ?>"style="display:none;width: 300px;height: 200px; position: fixed; z-index:100;box-shadow: 1px 1px 50px rgba(0,0,0,.3);" src="<?php echo $v2; ?>"></img>
+										<a href="javascript:;"><p onmouseover="
+										javascript:document.getElementById('<?php echo $v2; ?>').style.display='block';$h=window.event.clientY;$w=window.event.clientX+10;
+										if($h>window.screen.height-$('img').height()&&$w>window.screen.width-$('img').width()){
+										$('img').css('top', window.event.clientY-$('img').height()-$('img').height() + 'px');
+										$('img').css('left',window.event.clientX-$('img').width()-$('img').width()+ 'px');
+										}
+										else if($h>window.screen.height-$('img').height()-110){
+											$('img').css('left',  $w+ 'px');
+											$('img').css('top', window.event.clientY-$('img').height()-$('img').height()+ 'px');
+										}else if($w>window.screen.width-$('img').width()-20){
+											$('img').css('left',window.event.clientX-$('img').width()-$('img').width()+ 'px');
+											$('img').css('top', $h + 'px');
+										}
+										else{
+										$('img').css('left',  $w+ 'px');
+										$('img').css('top', $h + 'px');}"
+										onmouseout="javascript:document.getElementById('<?php echo $v2; ?>').style.display='none';"
 										><?php echo $v2; ?></p></a>
 								<?php } ?>
 								<?php } elseif(explode("/", $v[$v1])[1] == 'public') { ?>
